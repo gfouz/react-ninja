@@ -1,0 +1,16 @@
+.colorBackground {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(44px);
+  z-index: -1;
+  background: radial-gradient(at 71% 77%, #016a70 0, transparent 21%),
+    radial-gradient(at 36% 47%, #163020 0, transparent 50%),
+    radial-gradient(at 54% 29%, #304d30 0, transparent 28%),
+    radial-gradient(at 45% 51%, #016a70 0, transparent 53%),
+    radial-gradient(at 73% 44%, #016a70 0, transparent 54%),
+    radial-gradient(at 24% 7%, #016a70 0, transparent 40%),
+    radial-gradient(at 76% 46%, #016a70 0, transparent 50%);
+}
