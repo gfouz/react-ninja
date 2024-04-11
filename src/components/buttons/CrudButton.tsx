@@ -11,7 +11,7 @@ const CrudButton = ({ postId }) => {
 	return (
 		<div className='flex'>
 			<ThreeDotsButton toggle={setDrodown} />
-			<div className='z-10 w-44 bg-white rounded  divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600'>
+			<div className='z-10 w-44 '>
 				{dropdown === true ? (
 					<ul className='py-1 text-sm'>
 						<li>
@@ -25,7 +25,11 @@ const CrudButton = ({ postId }) => {
 							)}
 						</li>
 					</ul>
-				) : null}
+				) : (
+					<div className='hidden'>
+						<span className=''>actions</span>
+					</div>
+				)}
 			</div>
 		</div>
 	);

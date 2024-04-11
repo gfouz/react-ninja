@@ -6,6 +6,7 @@ import GetPosts from './posts/getPosts';
 import RegisterPage from './users/register';
 import LoginPage from './users/login';
 import ErrorPage from '../routes/error-page.tsx';
+import PostLayout from '../components/post/PostLayout.tsx';
 
 export const list = [
   {
@@ -15,7 +16,7 @@ export const list = [
   },
   {
     path: '/published/:slug',
-    element: <Post />,
+    element: <PostLayout />,
     errorElement: <ErrorPage />,
   },
   {
@@ -37,5 +38,10 @@ export const list = [
   {
     path: 'login/',
     element: <LoginPage />,
+  },
+  {
+    path: 'layout/',
+    element: <PostLayout />,
+    errorElement: <ErrorPage />,
   },
 ];

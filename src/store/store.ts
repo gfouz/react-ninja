@@ -1,33 +1,27 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { actions, Action, PostStore } from './actions.ts';
 
-const initialState = {
-  count: 0,
-};
 
-const actions = {
-  increment: (state, action) => {
-    return { count: state.count + action.payload };
-  },
-  decrement: (state, action) => {
-    return { count: state.count - action.payload };
-  },
-  reset: () => {
-    return { count: 0 };
-  },
-};
-
-const reducer = (state, action) => {
+const reducer = (state: PostStore, action: Action) => {
   const { type } = action;
   const currentAction = actions[type];
-  return currentAction ? currentAction(state, action) : initialState;
+  return currentAction ? currentAction(state, action) : state;
 };
 
-export const useCounterStore = create((set) => ({
-  count: 0,
-  dispatch: (action) => set((state) => reducer(state, action)),
-}));
-
-/*example of how to consume the store
-const dispatch = useCounterStore((state) => state.dispatch)
-dispatch({type:'increment', payload: 1}) 
-*/
+const initialState = {
+  title: 'initial title',
+  content: 'initial content',
+};
+//Redux-like patterns store
+const postState = persist<PostStore>(
+  (set) => ({
+    post: initialState,
+    dispatch: (action: Action) => set((state) => reducer(state, action)),
+  }),
+  {
+    name: 'post', // name of the item in the storage (must be unique)
+    storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+  },
+);
+export const usePostStore = create(postState);

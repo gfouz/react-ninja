@@ -25,14 +25,14 @@ export default function PostUpdate() {
   const url2 = `http://127.0.0.1:8000/api/posts/get/post/${id}`;
   const { mutation } = useUpdatePost(updatePost, url);
 
-  const { data: post } = useOnePostQuery(getSinglePost, url2);
+  const { data: post } = postId && useOnePostQuery(getSinglePost, url2);
 
   const onSubmit: SubmitHandler<addPostType> = async (data) => {
     const res = await mutation.mutateAsync(data);
   };
   React.useEffect(() => {
     setId(postId);
-  });
+  }, [postId]);
   return (
     <div className='container mx-auto mt-8'>
       <h2 className='text-2xl font-bold mb-4'>Update Post</h2>
