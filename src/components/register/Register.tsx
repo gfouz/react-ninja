@@ -2,14 +2,20 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterSchema, RegisterInput } from '../../schemas/register.schema';
 import { registerService } from '../../services/registerService';
-import { useAcyncMutation } from '../../hooks/useAcyncMutation';
+import { useRegisterMutation } from '../../hooks/useRegisterMutation';
 
 import GithubButton from '../buttons/GithubButton';
 import GoogleButton from '../buttons/GoogleButton';
 import SubmitButton from './SubmitButton';
-import UsernameInput from '../../components/input/UsernameInput';
-import EmailInput from '../../components/input/EmailInput';
-import PasswordInput from '../../components/input/PasswordInput';
+import UsernameInput from './UsernameInput';
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
+
+export interface FormInput {
+  username: string;
+  email: string;
+  password: string;
+}
 
 export default function Register() {
   const {
@@ -20,10 +26,10 @@ export default function Register() {
     resolver: zodResolver(RegisterSchema),
   });
 
-  const { mutation } = useAcyncMutation(registerService);
+  const { mutation } = useRegisterMutation(registerService);
 
   const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
-    const res = mutation.mutateAsync(data);
+    mutation.mutateAsync(data);
   };
   return (
     <div className='w-full h-[100vh] bg-slate-800'>

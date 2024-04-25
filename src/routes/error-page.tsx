@@ -11,7 +11,8 @@ export default function ErrorPage() {
         <p>Sorry, an unexpected error has occurred.</p>
         <p>No available data or failed internet conexion.</p>
         <p>
-          <i>{error.statusText || error.message}</i>
+          {/*@ts-ignore*/}
+          <i>{error?.statusText || error?.message}</i>
         </p>
         <h3>
           <Link to='/'>Homepage</Link>

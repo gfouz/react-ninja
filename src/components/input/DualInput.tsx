@@ -1,4 +1,4 @@
-export default function DualInput({ success = true }) {
+export default function DualInput({ success = true }: { success: boolean }) {
   return (
     <>
       {success == false ? (

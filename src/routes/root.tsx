@@ -1,12 +1,7 @@
-import DualInput from '../components/input/DualInput';
-import PendingDots from '../components/loader/PendingDots';
 import Navbar from '../components/navbar/Navbar';
-import PostNavbar from '../components/post/PostNavbar.tsx';
-import { usePostListQuery } from '../hooks/usePostListQuery.tsx';
+import { projects, about } from './content.ts';
 
 const Root = () => {
-  const { posts } = usePostListQuery();
-
   return (
     <div className='font-sans antialiased bg-slate-800'>
       {/* Header */}
@@ -15,19 +10,19 @@ const Root = () => {
       </header>
 
       {/* Main Content */}
-      <main className='container mx-auto'>
+      <main className='mx-auto'>
         {/* About Section */}
 
         <section className='grid place-items-center w-[100%] aspect-[1.85] bg-slate-800'>
-          <div className='text-center'>
+          <div className='grid place-items-center text-center'>
             <img
-              className='girl-motion'
-              src='images/slate-girl.jpg'
+              className='girl-motion max-w-[200px]'
+              src='images/www.png'
               alt='young girl'
             />
-            <div className='input-errors'>
-              <p className='text-white font-bold text-[1.2em]'>
-                welcome to my Portfolio!
+            <div className='input-errors my-8'>
+              <p className='text-white font-bold text-[1.2em] '>
+                Welcome to my Portfolio!
               </p>
             </div>
           </div>
@@ -36,26 +31,53 @@ const Root = () => {
         {/* Projects Section */}
         <section id='projects'>
           <div className='text-center mb-8'>
-            <h2 className='text-3xl font-bold text-green-800 mb-4'>Projects</h2>
-            <p className='text-lg text-green-700'>Check out some of my work.</p>
+            <h2 className='text-3xl font-bold text-blue-100 my-8'>Projects</h2>
+            <p className='text-lg text-blue-100'>Check out some of my work.</p>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className='grid-auto-fit p-4'>
             {/* Your projects here */}
-            <div className='bg-white rounded-lg shadow p-6'>
-              <h3 className='text-xl font-bold mb-2 text-green-800'>
-                Project Name
+            <div className='text-blue-100 p-6 rounded-lg border'>
+              <div className='grid place-items-center aspect-[600/400] text-center rounded-lg'>
+                <img src='images/blog.png' alt='' />
+              </div>
+              <h3 className='text-xl font-bold mb-2 text-blue-100'>
+                Ninja Blog
               </h3>
-              <p className='text-green-700'>Description of the project</p>
-              <PostNavbar />
+              <p
+                className='text-blue-100 paragraphs-link'
+                dangerouslySetInnerHTML={{ __html: projects.blog }}
+              />
             </div>
-            {/* Repeat for each project */}
-            <DualInput />
+            <div className='text-blue-100 p-6 rounded-lg border'>
+              <div className='grid place-items-center aspect-[600/400] text-center '>
+                <img src='images/handbag.png' alt='' />
+              </div>
+              <h3 className='text-xl font-bold mb-2'>Finances App</h3>
+              <p
+                className='paragraphs-link'
+                dangerouslySetInnerHTML={{ __html: projects.blog }}
+              />
+            </div>
+            <div className='text-blue-100 p-6 rounded-lg border'>
+              <div className='grid place-items-center aspect-[600/400] text-center rounded-lg transition-all'>
+                <img className='' src='images/cart.png' alt='' />
+              </div>
+              <h3 className='text-xl font-bold mb-2'>Ecommerce</h3>
+              <p
+                className='paragraphs-link'
+                dangerouslySetInnerHTML={{ __html: projects.blog }}
+              />
+            </div>
           </div>
-          <button className='border border-gray-900 rounded py-1 px-4'>
-            {' '}
-            <PendingDots pending={true} />{' '}
-          </button>
         </section>
+        <img src='images/fouz-dev.jpg' alt='' />
+
+        <div className='p-6 max-w-[700px] text-left mx-auto'>
+          <h3 className=' text-center text-blue-100 font-bold my-6'>
+            About me
+          </h3>
+          <p className='text-blue-100'>{about.col_one}</p>
+        </div>
       </main>
 
       {/* Footer */}

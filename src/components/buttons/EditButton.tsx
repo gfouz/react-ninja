@@ -1,14 +1,25 @@
 import { useNavigate } from 'react-router-dom';
+import { Post } from '../../store/actions.ts';
+import { usePostStore } from '../../store/store.ts';
 
-const EditButton = ({ postId }) => {
+interface EditButtonProps {
+	post: Post;
+}
+
+const EditButton = ({ post }: EditButtonProps) => {
 	const navigate = useNavigate();
-	const data = {
-		postId: postId,
-	};
+	const dispatch = usePostStore((state) => state.dispatch);
+
+	function setState() {
+		dispatch({ type: 'SET_POST', payload: post });
+		return true;
+	}
+
 	return (
 		<button
 			onClick={() => {
-				navigate('/update/post', { state: data });
+				setState();
+				navigate('/update/post');
 			}}
 			type='button'
 			className='flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200'

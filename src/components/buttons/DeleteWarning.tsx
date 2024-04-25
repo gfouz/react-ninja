@@ -1,8 +1,7 @@
-import React from 'react';
 import { deletePost } from '../../services/deletePost.ts';
 import { useDelete } from '../../hooks/useDelete.tsx';
 
-const DeleteWarning = ({ postId }) => {
+const DeleteWarning = ({ postId }: { postId: string }) => {
 	const url = `http://127.0.0.1:8000/api/posts/delete/post/${postId}`;
 	const { mutation } = useDelete(deletePost);
 
@@ -11,7 +10,7 @@ const DeleteWarning = ({ postId }) => {
 			type='button'
 			onClick={async () => {
 				try {
-					const res = await mutation.mutateAsync(url);
+					await mutation.mutateAsync(url);
 				} catch (error) {
 					console.log(error);
 				}

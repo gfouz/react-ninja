@@ -1,11 +1,11 @@
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 
-type Props = {
-  register: UseFormRegister<IFormValues>;
+type PasswordInputProps = {
+  register: UseFormRegister<{password:string}>;
   errors: FieldErrors<{ password: string }>;
 };
 
-const PasswordInput = ({ register, errors }) => {
+const PasswordInput = ({ register, errors }: PasswordInputProps) => {
   return (
     <div className='relative mt-3'>
       <input

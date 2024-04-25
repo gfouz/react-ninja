@@ -1,11 +1,11 @@
 interface Props {
-  size: string;
+  size: number;
   color: string;
 }
 
-export default function FouzLogo({ size, color }: Props) {
+export default function FouzLogo({ size=24, color }: Props) {
   return (
-    <svg width={size} length='auto' viewBox='0 0 224 252' id='svg37575'>
+    <svg width={size} height='auto' viewBox='0 0 224 252' id='svg37575'>
       <defs id='defs37572'>
         <clipPath clipPathUnits='userSpaceOnUse' id='clipPath8948'>
           <path

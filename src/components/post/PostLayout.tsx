@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -7,8 +8,8 @@ import { usePostListQuery } from '../../hooks/usePostListQuery.tsx';
 export default function PostLayout() {
   const { slug } = useParams();
   const { posts } = usePostListQuery();
-  const post = posts.find((post) => post.slug === slug);
-  const created_at = post.created_at !== undefined ? post.created_at : '';
+  const post = posts?.find((post) => post.slug === slug);
+  const created_at = post?.created_at !== undefined ? post.created_at : '';
   const published = new Date(created_at).toDateString();
 
   return (

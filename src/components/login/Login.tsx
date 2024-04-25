@@ -1,28 +1,35 @@
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import { LoginSchema, LoginInput } from '../../schemas/login.schema.ts';
+import { LoginSchema, LoginInferData } from '../../schemas/login.schema.ts';
 import { loginService } from '../../services/loginService.ts';
-import { useAcyncMutation } from '../../hooks/useAcyncMutation';
+import { useLoginMutation } from '../../hooks/useLoginMutation.tsx';
 
 import GithubButton from '../../components/buttons/GithubButton.tsx';
 import GoogleButton from '../../components/buttons/GoogleButton.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
-import UsernameInput from '../../components/input/UsernameInput.tsx';
-import PasswordInput from '../../components/input/PasswordInput.tsx';
+import UsernameInput from './UsernameInput.tsx';
+import PasswordInput from './PasswordInput.tsx';
+import { useUserStore } from '../../store/userstore.ts';
 
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginInput>({
+  } = useForm<LoginInferData>({
     resolver: zodResolver(LoginSchema),
   });
-  const { mutation } = useAcyncMutation(loginService);
-  const onSubmit: SubmitHandler<addPostType> = async (data) => {
-    const res = mutation.mutateAsync(data);
+  const dispatch = useUserStore((state) => state.dispatch);
+  const user = useUserStore((state) => state.user);
+  const { mutation } = useLoginMutation(loginService);
+  const onSubmit: SubmitHandler<LoginInferData> = async (data) => {
+    const res = await mutation.mutateAsync(data);
+    dispatch({ type: 'SET_USER', payload: res });
   };
+
+  //console.log(user);
+
   return (
     <div className='w-full h-[100vh] bg-slate-800'>
       <div className='p-8 lg:w-1/2 mx-auto'>

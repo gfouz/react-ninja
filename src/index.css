@@ -28,26 +28,20 @@ body {
   font-size: clamp(1rem, calc(0.93rem + 0.33vw), 1.19rem);
 }
 
-h1 {
-  font-size: 2.5rem; /* Responsive font size for h1 */
-  margin-bottom: 1rem;
+h3 {
+  margin-block-start: 1em;
 }
-
-h2 {
-  font-size: 2rem; /* Responsive font size for h2 */
-  margin-bottom: 0.8rem;
-}
-
-/* Additional styles for paragraphs, links, etc. */
 p {
-  margin-bottom: 1.2rem;
+  margin-block: 1rem;
 }
 
 a {
   color: #007bff; /* Example link color */
   text-decoration: none;
 }
-
+.paragraphs-link a {
+  color: yellow;
+}
 /* Adjustments for smaller screens */
 @media screen and (max-width: 576px) {
   h1 {
@@ -150,4 +144,9 @@ a {
   to {
     scale: 1;
   }
+}
+.grid-auto-fit {
+  grid-gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }

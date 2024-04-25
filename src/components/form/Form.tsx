@@ -16,7 +16,7 @@ const Form = () => {
     resolver: zodResolver(dataSchema),
   });
 
-  const { data, error, fetchData } = useContactService();
+  const { fetchData } = useContactService();
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     const newdata = { ...data, message: defaultMessage };

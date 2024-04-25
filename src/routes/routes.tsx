@@ -1,17 +1,24 @@
-import Root from './root';
-import Post from './posts/post';
-import UpdatePostPage from './posts/updatePost';
-import PostCreator from './posts/addPost';
-import GetPosts from './posts/getPosts';
-import RegisterPage from './users/register';
-import LoginPage from './users/login';
-import ErrorPage from '../routes/error-page.tsx';
-import PostLayout from '../components/post/PostLayout.tsx';
+import { lazy } from 'react';
+const Root = lazy(() => import('./root'));
+const RouteUpdatePost = lazy(() => import('./posts/route-update-post.tsx'));
+const RouteCreatePost = lazy(() => import('./posts/routecreatepost.tsx'));
+const GetPosts = lazy(() => import('./posts/route-get-posts.tsx'));
+const RegisterPage = lazy(() => import('./users/register'));
+const LoginPage = lazy(() => import('./users/login'));
+const ErrorPage = lazy(() => import('../routes/error-page.tsx'));
+const PostLayout = lazy(() => import('../components/post/PostLayout.tsx'));
+const Dashboard = lazy(() => import('./posts/dashboard.tsx'));
+const Post = lazy(() => import('../components/post/Post.tsx'));
 
 export const list = [
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
     errorElement: <ErrorPage />,
   },
   {
@@ -24,12 +31,12 @@ export const list = [
     element: <GetPosts />,
   },
   {
-    path: 'create/post',
-    element: <PostCreator />,
+    path: '/create/post',
+    element: <RouteCreatePost />,
   },
   {
     path: 'update/post',
-    element: <UpdatePostPage />,
+    element: <RouteUpdatePost />,
   },
   {
     path: 'register/',
@@ -42,6 +49,11 @@ export const list = [
   {
     path: 'layout/',
     element: <PostLayout />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'publicar/',
+    element: <Post />,
     errorElement: <ErrorPage />,
   },
 ];

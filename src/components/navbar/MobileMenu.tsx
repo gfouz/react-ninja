@@ -27,7 +27,7 @@ const MobileMenu = () => {
           to='/create/post'
           className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
         >
-          {pathname !== 'create/post' ? 'Create Post' : null}
+          {pathname !== '/create/post' ? 'Create Post' : null}
         </Link>
       </div>
     </div>

@@ -1,8 +1,9 @@
-import { useCounterStore } from '../../store/store';
+//@ts-nocheck
+import { useCounterStore } from '../../store/counterstore';
 
 export default function Counter() {
-  const count = useCounterStore((state) => state.count);
-  const dispatch = useCounterStore((state) => state.dispatch);
+  const count = useCounterStore((state: any) => state.count);
+  const dispatch = useCounterStore((state: any) => state.dispatch);
   return (
     <div className='w-full min-h-[100vh] flex flex-col items-center justify-center'>
       <div className='w-[100px] border border-red-700 p-8 inline-block'>

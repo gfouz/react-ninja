@@ -1,4 +1,9 @@
-export const updatePost = async (data, url) => {
+interface UpdatePostData {
+  title: string;
+  content: string;
+}
+
+export const updatePostService = async (data: UpdatePostData, url: string) => {
   // const url = `http://127.0.0.1:8000/api/posts/update/post/${postId}`;
   try {
     const response = await fetch(url, {

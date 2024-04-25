@@ -1,8 +1,8 @@
 import PostUpdate from '../../components/post/PostUpdate.tsx';
 
-export default function UpdatePostPage() {
+export default function RouteUpdatePost() {
 	return (
-		<div className='w-full p-4'>
+		<div className='w-full h-screen p-4'>
 			<PostUpdate />
 		</div>
 	);

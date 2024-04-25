@@ -1,14 +1,10 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { Path, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, Path, UseFormRegister } from 'react-hook-form';
 
-interface IFormValues {
-  email: string;
-}
 
 type InputProps = {
-  label: Path<IFormValues>;
-  register: UseFormRegister<IFormValues>;
+  label: Path<{email:string}>;
+  register: UseFormRegister<{email:string}>;
+  errors: FieldErrors<{ label: string }>;
 };
 
 export default function Input({ label, register, errors }: InputProps) {
@@ -27,7 +23,7 @@ export default function Input({ label, register, errors }: InputProps) {
           Subscribe
         </button>
       </div>
-      <p className='text-[#ff0000] mt-1'>{errors?.email?.message}</p>
+      <p className='text-[#ff0000] mt-1'>{errors?.label?.message}</p>
     </fieldset>
   );
 }

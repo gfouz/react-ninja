@@ -19,8 +19,8 @@ const Navbar = () => {
             >
               <img
                 className='w-[40px] h-auto'
-                src='images/logo.png'
-                alt='my personal logo'
+                src='/images/logo.png'
+                alt='my logo'
               />
               fouzJs
             </a>

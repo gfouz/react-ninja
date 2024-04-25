@@ -1,4 +1,4 @@
-const PostCard = ({ title }) => {
+const PostCard = ({ title }:{title:string}) => {
   return (
     <div className='max-w-xl w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto mb-6'>
       <div className='p-6'>

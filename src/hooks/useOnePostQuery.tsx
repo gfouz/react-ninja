@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+import { Post } from '../store/actions';
 
-export const useOnePostQuery = (queryFn, url) => {
-	const { isPending, isError, data, error } = useQuery({
+export const useOnePostQuery = (queryFn: (arg0: any) => Post | Promise<Post>, url: string) => {
+	const { isPending, isError, data, error } = useQuery<Post>({
 		queryKey: ['get-one-post'],
 		queryFn: () => {
 			return queryFn(url);

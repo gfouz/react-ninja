@@ -1,12 +1,22 @@
+//@ts-nocheck
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CrudButton from '../buttons/CrudButton.tsx';
+import { usePostListQuery } from '../../hooks/usePostListQuery';
+import { useMutationState } from '@tanstack/react-query';
+import UpdateDeleteButton from '../buttons/UpdateDeleteButton.tsx';
 
-const Table = ({ posts }) => {
-	const [data, setData] = React.useState([]);
+const Table = () => {
+	const { posts, refetch } = usePostListQuery();
+	const variables = useMutationState<string | unknown>({
+		filters: { mutationKey: ['posts'], status: 'success' },
+		select: (mutation) => mutation.state?.variables,
+	});
+
+	const title = variables[0]?.title;
+
 	React.useEffect(() => {
-		setData(posts);
-	}, [posts]);
+		refetch();
+	}, [title, posts]);
 	return (
 		<div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
 			<table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
@@ -22,37 +32,48 @@ const Table = ({ posts }) => {
 							Date
 						</th>
 						<th scope='col' className='px-6 py-3'>
-							<span className='sr-only'>Edit</span>
+							Actions
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					{data?.map((post) => {
-						return (
-							<tr
-								key={post?.id}
-								className='bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600'
-							>
-								<th
-									scope='row'
-									className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+					{posts?.map(
+						(post: {
+							id: number;
+							title: string;
+							slug: string;
+							content: string;
+							author: { username: string };
+							created_at: string;
+						}) => {
+							return (
+								<tr
+									key={post?.id}
+									className='bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600'
 								>
-									<Link
-										className='no-underline'
-										to={`/published/${post?.slug}`}
+									<th
+										scope='row'
+										className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
 									>
-										{post?.title}
-									</Link>
-								</th>
-								<td className='px-6 py-4'>{post.author?.username}</td>
-								<td className='px-6 py-4'>{post?.date}</td>
+										<Link
+											className='no-underline text-yellow-300'
+											to={`/published/${post?.slug}`}
+										>
+											{post?.title.toUpperCase()}
+										</Link>
+									</th>
+									<td className='px-6 py-4'>{post.author?.username}</td>
+									<td className='px-6 py-4'>
+										{new Date(post?.created_at).toDateString()}
+									</td>
 
-								<td className=''>
-									<CrudButton postId={post?.id} />
-								</td>
-							</tr>
-						);
-					})}
+									<td className=''>
+										<UpdateDeleteButton postId={post?.id} post={post} />
+									</td>
+								</tr>
+							);
+						},
+					)}
 				</tbody>
 			</table>
 		</div>

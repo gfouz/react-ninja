@@ -1,4 +1,10 @@
-export const postRequest = async (data) => {
+interface CreatePostData {
+  title: string;
+  content: string;
+  author_id: number;
+}
+
+export const postRequest = async (data: CreatePostData) => {
   const url = 'http://127.0.0.1:8000/api/posts/create/newpost';
   try {
     const response = await fetch(url, {

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
 interface DataProps {
   ok: boolean;
@@ -36,7 +36,6 @@ export const useContactService = () => {
 
       if (!response.ok) throw new Error(response.statusText);
 
-      const responseData = await response.json();
 
       setData({ ...data, ok: response.ok, status: response.status });
     } catch (err) {

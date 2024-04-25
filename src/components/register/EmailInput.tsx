@@ -1,10 +1,12 @@
-import { UseFormRegister } from 'react-hook-form';
+import { UseFormRegister, FieldErrors } from 'react-hook-form';
+import { RegisterInput } from '../../schemas/register.schema';
 
 type Props = {
-  register: UseFormRegister<IFormValues>;
+  register: UseFormRegister<RegisterInput>;
+  errors: FieldErrors<RegisterInput>;
 };
 
-const EmailInput = ({ register }: Props) => {
+const EmailInput = ({ register, errors }: Props) => {
   return (
     <div className='relative mt-3'>
       <input
@@ -25,6 +27,7 @@ const EmailInput = ({ register }: Props) => {
           <path d='M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z' />
         </svg>
       </div>
+      {errors.email?.message ? <p>{`${errors.email?.message}`}</p> : null}
     </div>
   );
 };

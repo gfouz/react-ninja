@@ -7,10 +7,10 @@ export default function PostNavbar() {
     <ul className=''>
       {posts &&
         posts.map((post) => (
-          <li>
+          <li key={post.id}>
             <Link
               to={`/published/${post.slug}`}
-              className='text-blue-600 underline'
+              className='text-yellow-600 underline'
             >
               {post.title}
             </Link>

@@ -1,6 +1,6 @@
 // const url = 'http://127.0.0.1:8000/api/posts/delete/post/';
 
-export const deletePost = async (url) => {
+export const deletePost = async (url: string) => {
   try {
     const response = await fetch(url, {
       method: 'DELETE',

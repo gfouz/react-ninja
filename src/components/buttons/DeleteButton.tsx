@@ -1,10 +1,8 @@
-import React from 'react';
-import { deletePost } from '../../services/deletePost.ts';
-import { useDelete } from '../../hooks/useDelete.tsx';
+import React, { SetStateAction } from 'react';
 
-const DeleteButton = ({ setIsDelete }) => {
-	/*const url = `http://127.0.0.1:8000/api/posts/delete/post/${postId}`;
-	const { mutation } = useDelete(deletePost);*/
+
+const DeleteButton = ({ setIsDelete }:{setIsDelete: React.Dispatch<SetStateAction<boolean>> }) => {
+	
 
 	return (
 		<button
