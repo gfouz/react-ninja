@@ -1,4 +1,9 @@
-export const getSinglePost = async (url) => {
+interface PostDataService {
+  title: string;
+  content: string;
+}
+
+export const getSinglePost = async (url: string) => {
   const response = await fetch(url);
   const post = await response.json();
   return post;
@@ -11,7 +16,7 @@ export const getPostList = async () => {
   return posts;
 };
 
-export const updatePost = async (data, url) => {
+export const updatePost = async (data: PostDataService, url: string) => {
   // const url = `http://127.0.0.1:8000/api/posts/update/post/${postId}`;
   try {
     const response = await fetch(url, {
@@ -35,7 +40,7 @@ export const updatePost = async (data, url) => {
   }
 };
 
-export const createPost = async (data) => {
+export const createPost = async (data: PostDataService) => {
   const url = 'http://127.0.0.1:8000/api/posts/create/newpost';
   try {
     const response = await fetch(url, {
@@ -59,7 +64,7 @@ export const createPost = async (data) => {
   }
 };
 
-export const deletePost = async (url) => {
+export const deletePost = async (url: string) => {
   try {
     const response = await fetch(url, {
       method: 'DELETE',
