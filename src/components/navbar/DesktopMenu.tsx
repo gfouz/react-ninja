@@ -1,33 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
 
-const DesktopMenu = () => {
+let regex = /\//g;
+
+const DesktopMenu = (props) => {
+  const { links, color } = props;
   let { pathname } = useLocation();
   return (
     <div className='hidden md:flex items-center space-x-4'>
-      <Link
-        to='/'
-        className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
-      >
-        {pathname !== '/' ? 'Home' : null}
-      </Link>
-      <Link
-        to='/register'
-        className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
-      >
-        {pathname !== '/register' ? 'Register' : null}
-      </Link>
-      <Link
-        to='/login'
-        className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
-      >
-        {pathname !== '/login' ? 'Login' : null}
-      </Link>
-      <Link
-        to='/create/post'
-        className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
-      >
-        {pathname !== '/create/post' ? 'Create Post' : null}
-      </Link>
+      {links?.map((link) => (
+        <div key={link} className={pathname !== link ? 'block' : 'hidden'}>
+          <Link
+            to={link}
+            style={{ color: color }}
+            className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold'
+          >
+            <span>{pathname !== link ? link.replace(regex, ' ') : null} </span>
+            <span>{link === '/' && pathname !== link ? 'home' : null}</span>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };

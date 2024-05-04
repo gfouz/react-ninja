@@ -1,12 +1,12 @@
 import React, { SetStateAction } from 'react';
 
-
-const DeleteButton = ({ setIsDelete }:{setIsDelete: React.Dispatch<SetStateAction<boolean>> }) => {
-	
-
+const DeleteButton = ({
+	setIsDelete,
+}: {
+	setIsDelete: React.Dispatch<SetStateAction<boolean>>;
+}) => {
 	return (
 		<button
-			type='button'
 			onClick={() => {
 				setIsDelete((st) => !st);
 			}}

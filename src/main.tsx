@@ -7,7 +7,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const Loader = () => {
-  return <h1>Loading...</h1>;
+  return (
+    <div className='min-h-screen grid place-items-center'>
+      <div className='inline-flex justify-center items-center text-md font-bold '>
+        <span className='mr-[2px] text-green-700'>Loading</span>
+        <div className='loader mt-2'></div>
+      </div>
+    </div>
+  );
 };
 
 const queryClient = new QueryClient();

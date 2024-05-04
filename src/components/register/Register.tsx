@@ -56,6 +56,9 @@ export default function Register() {
             <PasswordInput register={register} errors={errors} />
             <SubmitButton />
           </form>
+          {mutation.failureReason ? (
+            <p className='text-red-500'>{`${mutation.failureReason}`}</p>
+          ) : null}
         </div>
       </div>
     </div>

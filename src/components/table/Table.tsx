@@ -7,16 +7,15 @@ import UpdateDeleteButton from '../buttons/UpdateDeleteButton.tsx';
 
 const Table = () => {
 	const { posts, refetch } = usePostListQuery();
-	const variables = useMutationState<string | unknown>({
+	const data = useMutationState<string | unknown>({
 		filters: { mutationKey: ['posts'], status: 'success' },
-		select: (mutation) => mutation.state?.variables,
+		select: (mutation) => mutation.state?.data,
 	});
-
-	const title = variables[0]?.title;
 
 	React.useEffect(() => {
 		refetch();
-	}, [title, posts]);
+	}, [posts]);
+	console.log(data);
 	return (
 		<div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
 			<table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>

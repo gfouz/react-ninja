@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Aptos, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   max-width: 1300px;
@@ -26,6 +26,15 @@ body {
   max-width: 1300px;
   min-height: 100vh;
   font-size: clamp(1rem, calc(0.93rem + 0.33vw), 1.19rem);
+}
+.grid-auto-fit {
+  grid-gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.grid-post-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
 }
 
 h3 {
@@ -67,11 +76,6 @@ a {
     }
   }
 
-  .grid-auto-fit {
-    grid-gap: 5px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
   .responsive-img {
     max-width: 100%;
     height: auto;

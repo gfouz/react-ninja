@@ -1,21 +1,40 @@
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Navbar from '../../components/navbar/Navbar';
 import { usePostListQuery } from '../../hooks/usePostListQuery.tsx';
 
+const links = ['/'];
+
 export default function PostNavbar() {
+  const { slug } = useParams();
   const { posts } = usePostListQuery();
   return (
-    <ul className=''>
-      {posts &&
-        posts.map((post) => (
-          <li key={post.id}>
-            <Link
-              to={`/published/${post.slug}`}
-              className='text-yellow-600 underline'
+    <div className=''>
+      <ul className='grid'>
+        {posts ? (
+          posts.map((post) => (
+            <li
+              className={post.slug === slug ? 'row-start-1' : ''}
+              key={post.id}
             >
-              {post.title}
-            </Link>
-          </li>
-        ))}
-    </ul>
+              <Link
+                to={`/published/${post.slug}`}
+                className={
+                  post.slug === slug
+                    ? 'text-green-400 font-bold'
+                    : 'text-gray-400 underline'
+                }
+              >
+                {post.title}
+              </Link>
+            </li>
+          ))
+        ) : (
+          <p className='text-red-500'>
+            It seems there is not Internet connexion!
+          </p>
+        )}
+      </ul>
+    </div>
   );
 }

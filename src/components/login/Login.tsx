@@ -28,7 +28,7 @@ const Login = () => {
     dispatch({ type: 'SET_USER', payload: res });
   };
 
-  //console.log(user);
+  console.log(mutation.failureReason);
 
   return (
     <div className='w-full h-[100vh] bg-slate-800'>
@@ -54,6 +54,9 @@ const Login = () => {
             <PasswordInput register={register} errors={errors} />
             <SubmitButton />
           </form>
+          {mutation.failureReason ? (
+            <p className='text-red-500'>{`${mutation.failureReason}`}</p>
+          ) : null}
         </div>
       </div>
     </div>

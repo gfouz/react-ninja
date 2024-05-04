@@ -1,12 +1,18 @@
 import Navbar from '../components/navbar/Navbar';
-import { projects, about } from './content.ts';
+import MotionOnScroll from '../components/framer-motion/MotionOnScroll.tsx';
+import { motion, Variants } from 'framer-motion';
+import { rotateX } from '../components/framer-motion/MotionOnScroll.tsx';
+import { opacity, zoom } from '../components/framer-motion/MotionOnScroll.tsx';
+import { blog_overview, about } from './content.ts';
+
+const links = ['/', '/register', '/login', '/blog'];
 
 const Root = () => {
   return (
     <div className='font-sans antialiased bg-slate-800'>
       {/* Header */}
       <header className=''>
-        <Navbar />
+        <Navbar links={links} />
       </header>
 
       {/* Main Content */}
@@ -18,7 +24,7 @@ const Root = () => {
             <img
               className='girl-motion max-w-[200px]'
               src='images/www.png'
-              alt='young girl'
+              alt='welcome'
             />
             <div className='input-errors my-8'>
               <p className='text-white font-bold text-[1.2em] '>
@@ -36,52 +42,77 @@ const Root = () => {
           </div>
           <div className='grid-auto-fit p-4'>
             {/* Your projects here */}
-            <div className='text-blue-100 p-6 rounded-lg border'>
+            <div className='text-blue-100 p-6 rounded-lg border border-gray-500'>
               <div className='grid place-items-center aspect-[600/400] text-center rounded-lg'>
-                <img src='images/blog.png' alt='' />
+                <img src='images/blog.jpg' alt='' />
               </div>
               <h3 className='text-xl font-bold mb-2 text-blue-100'>
                 Ninja Blog
               </h3>
               <p
                 className='text-blue-100 paragraphs-link'
-                dangerouslySetInnerHTML={{ __html: projects.blog }}
+                dangerouslySetInnerHTML={{ __html: blog_overview }}
               />
             </div>
-            <div className='text-blue-100 p-6 rounded-lg border'>
+            <div className='text-blue-100 p-6 rounded-lg border border-gray-500'>
               <div className='grid place-items-center aspect-[600/400] text-center '>
-                <img src='images/handbag.png' alt='' />
+                <img src='images/finances.jpg' alt='' />
               </div>
               <h3 className='text-xl font-bold mb-2'>Finances App</h3>
               <p
                 className='paragraphs-link'
-                dangerouslySetInnerHTML={{ __html: projects.blog }}
+                dangerouslySetInnerHTML={{ __html: blog_overview }}
               />
             </div>
-            <div className='text-blue-100 p-6 rounded-lg border'>
+            <div className='text-blue-100 p-6 rounded-lg border border-gray-500'>
               <div className='grid place-items-center aspect-[600/400] text-center rounded-lg transition-all'>
                 <img className='' src='images/cart.png' alt='' />
               </div>
               <h3 className='text-xl font-bold mb-2'>Ecommerce</h3>
               <p
                 className='paragraphs-link'
-                dangerouslySetInnerHTML={{ __html: projects.blog }}
+                dangerouslySetInnerHTML={{ __html: blog_overview }}
               />
             </div>
           </div>
         </section>
-        <img src='images/fouz-dev.jpg' alt='' />
+        <article className='grid place-items-center aspect-[1300/740] p-20 md:my-12'>
+          <MotionOnScroll className='relative' variants={opacity}>
+            <img
+              className='responsive-img'
+              src='images/fouz-stack.png'
+              alt=''
+            />
+            <MotionOnScroll
+              className='w-full h-full absolute top-0 left-0 flex items-center'
+              variants={zoom}
+            >
+              <img
+                className='max-w-[150px]'
+                src='images/girl.png'
+                alt='fouz-avatar'
+              />
+            </MotionOnScroll>
+          </MotionOnScroll>
+        </article>
 
         <div className='p-6 max-w-[700px] text-left mx-auto'>
-          <h3 className=' text-center text-blue-100 font-bold my-6'>
+          <h3 className=' text-center text-3xl font-extrabold tracking-tight text-blue-100  my-6'>
             About me
           </h3>
-          <p className='text-blue-100'>{about.col_one}</p>
+          <article className='p-6'>
+            <img
+              className='float-left mr-2 max-w-[40px] relative top-2'
+              src='images/avatar.png'
+              alt='fouz-avatar'
+            />
+            <p className='text-blue-100'>{about.col_one}</p>
+          </article>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className='bg-green-700 text-white py-6'>
+      <footer className='bg-yellow-300 text-black font-semibold py-6'>
         <div className='container mx-auto text-center'>
           <p>&copy; 2024 Forest Portfolio. All rights reserved.</p>
         </div>

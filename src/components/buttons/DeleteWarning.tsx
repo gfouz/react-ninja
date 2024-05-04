@@ -1,19 +1,16 @@
 import { deletePost } from '../../services/deletePost.ts';
 import { useDelete } from '../../hooks/useDelete.tsx';
+import { useUserStore } from '../../store/userstore.ts';
 
 const DeleteWarning = ({ postId }: { postId: string }) => {
+	const user = useUserStore((state) => state.user);
 	const url = `http://127.0.0.1:8000/api/posts/delete/post/${postId}`;
-	const { mutation } = useDelete(deletePost);
+	const { mutation } = useDelete(deletePost, url, user?.token);
 
 	return (
 		<button
-			type='button'
 			onClick={async () => {
-				try {
-					await mutation.mutateAsync(url);
-				} catch (error) {
-					console.log(error);
-				}
+				await mutation.mutateAsync();
 			}}
 			className='flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400'
 		>

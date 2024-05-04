@@ -16,3 +16,11 @@ export const about = {
   Python.Because Django Ninja effortlessly manages authentication, 
   data validation, and API endpoints, ensuring security and scalability.`,
 };
+
+export const blog_overview = `Discover the dynamic fusion of React.js's interactive UIs 
+and Django Ninja's speedy APIs on my blog, where technology meets creativity.
+Django Ninja offers a fast and easy way to build RESTful APIs using Python,
+a popular and versatile language. Django Ninja's built-in validation and 
+authentication mechanisms ensure secure and reliable API endpoints. Integrated 
+documentation generation in Django Ninja simplifies API documentation and 
+client integration tasks.`;

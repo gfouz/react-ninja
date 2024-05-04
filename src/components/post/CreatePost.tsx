@@ -31,10 +31,10 @@ export default function CreatePost() {
     mutation.mutateAsync(data);
   };
 
-  console.log(user);
+  //console.log(user);
   return (
     <div className='container relative bg-slate-800 mx-auto my-12 max-w-[1000px] p-12 rounded'>
-      <div className='absolute top-0 right-0'>
+      <div className='border '>
         <CancelButton content='go back' />
       </div>
       <h2 className='text-2xl text-slate-100 font-bold my-4'>
@@ -79,7 +79,7 @@ export default function CreatePost() {
             <span className='text-red-500'>Content is required</span>
           )}
         </div>
-        <section className='sm:flex items-center md:py-12 my-12 '>
+        <section className='sm:flex items-center md:py-12 my-12'>
           {user?.user_id === undefined ? <GotoLoginButton /> : <SubmitButton />}
         </section>
       </form>
