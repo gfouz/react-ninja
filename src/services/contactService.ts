@@ -1,8 +1,8 @@
-import { InputData } from 'schemas/form.input.schema';
+import { ContactInterface } from '../schemas/contact.schema.ts';
 
 const formspree_url = 'https://formspree.io/f/xdovlonj';
 
-export async function contactService(data: InputData) {
+export async function contactService(data: ContactInterface) {
   try {
     const response = await fetch(formspree_url, {
       cache: 'no-cache',
@@ -15,7 +15,7 @@ export async function contactService(data: InputData) {
     const result = await response.json();
     return result;
   } catch (error) {
-    console.log('this is the horrible error' + error);
-    return { Error_Message: `Operation failed, caused by: ${error} ` };
+    console.error('There was a problem with the fetch operation:', error);
+    throw error;
   }
 }

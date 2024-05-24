@@ -1,11 +1,13 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useUserStore } from '../../store/userstore.ts';
+
 import {
   UpdatePostSchema,
   UpdatePostInterface,
 } from '../../schemas/post.schema';
-import { updatePostService } from '../../services/updatePostService.ts';
-import { useUpdatePost } from '../../hooks/useUpdatePost.tsx';
+import { postUpdateService } from '../../services/postUpdateService.ts';
+import { useMutationPostUpdate } from '../../hooks/useMutationPostUpdate.tsx';
 import { usePostStore } from '../../store/store.ts';
 import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
@@ -18,16 +20,21 @@ export default function PostUpdate() {
   } = useForm<UpdatePostInterface>({
     resolver: zodResolver(UpdatePostSchema),
   });
-
+  const user = useUserStore((state) => state.user);
   const post = usePostStore((state) => state.post);
   const url = `http://127.0.0.1:8000/api/posts/update/post/${post.id}`;
-  const { mutation } = useUpdatePost(updatePostService, url);
+  const { mutation } = useMutationPostUpdate(
+    postUpdateService,
+    url,
+    user?.token,
+  );
 
   const onSubmit: SubmitHandler<UpdatePostInterface> = async (
     data: UpdatePostInterface,
   ) => {
     await mutation.mutateAsync(data);
   };
+
   return (
     <div className='container relative mx-auto my-12 max-w-[1000px] p-12 rounded bg-emerald-950'>
       <div className='absolute top-0 right-0'>
@@ -73,6 +80,9 @@ export default function PostUpdate() {
           <CancelButton color='red' />
         </section>
       </form>
+      {mutation?.failureReason ? (
+        <p className='text-red-500'>{`${mutation?.failureReason}`}</p>
+      ) : null}
     </div>
   );
 }

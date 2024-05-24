@@ -2,7 +2,6 @@ import { lazy } from 'react';
 const Root = lazy(() => import('./root'));
 const RouteUpdatePost = lazy(() => import('./posts/route-update-post.tsx'));
 const RouteCreatePost = lazy(() => import('./posts/routecreatepost.tsx'));
-const GetPosts = lazy(() => import('./posts/route-get-posts.tsx'));
 const RegisterPage = lazy(() => import('./users/register'));
 const LoginPage = lazy(() => import('./users/login'));
 const ErrorPage = lazy(() => import('../routes/error-page.tsx'));
@@ -18,7 +17,7 @@ export const list = [
     errorElement: <ErrorPage />,
   },
   {
-    path: '/blog',
+    path: '/blog-dashboard',
     element: <Blog />,
     errorElement: <ErrorPage />,
   },
@@ -33,10 +32,7 @@ export const list = [
     element: <PostLayout />,
     errorElement: <ErrorPage />,
   },
-  {
-    path: 'posts/',
-    element: <GetPosts />,
-  },
+
   {
     path: '/create/post',
     element: <RouteCreatePost />,

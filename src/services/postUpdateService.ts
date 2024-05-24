@@ -1,14 +1,20 @@
-import { LoginInferData } from '../schemas/login.schema';
+interface UpdatePostData {
+  title: string;
+  content: string;
+}
 
-const url = 'http://127.0.0.1:8000/api/users/login';
-
-export const loginService = async (data: LoginInferData) => {
+export const postUpdateService = async (
+  data: UpdatePostData,
+  url: string,
+  token: string | undefined,
+) => {
+  // const url = `http://127.0.0.1:8000/api/posts/update/post/${postId}`;
   try {
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        //'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });

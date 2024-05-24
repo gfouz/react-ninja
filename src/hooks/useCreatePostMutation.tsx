@@ -3,10 +3,15 @@ import { CreatePostInterface } from '../schemas/post.schema.ts';
 
 const queryClient = new QueryClient();
 
- type MutationFunctionType = {(data: CreatePostInterface, token: string): Promise<any>; (arg0: CreatePostInterface, arg1: string): any};
- 
+type MutationFunctionType = {
+  (data: CreatePostInterface, token: string | undefined): Promise<any>;
+  (arg0: CreatePostInterface, arg1: string): any;
+};
+
 export const useCreatePostMutation = (
-  fetchApi: MutationFunctionType, token: string) => {
+  fetchApi: MutationFunctionType,
+  token: string | undefined,
+) => {
   const mutation = useMutation({
     mutationFn: (data: CreatePostInterface) => {
       return fetchApi(data, token);

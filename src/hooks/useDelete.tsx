@@ -4,11 +4,11 @@ const queryClient = new QueryClient();
 
 export const useDelete = (
   fetchApi: {
-    (url: string, token: string): Promise<any>;
+    (url: string, token: string | undefined): Promise<any>;
     (arg0: string, arg1: string): Promise<unknown>;
   },
   url: string,
-  token: string,
+  token: string | undefined,
 ) => {
   const mutation = useMutation({
     mutationFn: () => {

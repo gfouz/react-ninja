@@ -10,6 +10,7 @@ import SubmitButton from '../../components/buttons/SubmitButton.tsx';
 import GotoLoginButton from '../../components/buttons/GoToLoginButton.tsx';
 import Select from '../../components/select/Select.tsx';
 import DashboardButton from '../../components/buttons/DashboardButton.tsx';
+import MaterialDesignInput from '../../components/input/MaterialDesignInput.tsx';
 
 import {
   CreatePostSchema,
@@ -37,41 +38,33 @@ export default function CreatePost() {
 
   console.log(categories);
   return (
-    <div className='w-full bg-slate-800'>
-      <div className='bg-gray-100 mx-auto max-w-[800px]  p-12 rounded'>
-        <div className='rounded flex justify-around rounded bg-[#b7b7b7] py-1 text-center'>
-          <h2 className='text-3xl text-gray-700 font-extrabold tracking-tight font-bold my-4'>
-            Create New Post
-          </h2>
-          <div className='h-full p-4'>
-            <DashboardButton />
-          </div>
-        </div>
-
-        <form className='my-8' onSubmit={handleSubmit(onSubmit)}>
+    <section className='md:flex justify-evenly'>
+      <div className='mx-auto mb-4 bg-white p-8 rounded-lg shadow-lg w-full max-w-md'>
+        <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-10 text-center'>
+          Create Post
+        </h2>
+        <form className='max-w-md mx-auto' onSubmit={handleSubmit(onSubmit)}>
           <input
             defaultValue={user?.user_id}
             type='hidden'
             {...register('author_id')}
           />
           <div className='mb-4'>
-            <label
-              htmlFor='title'
-              className='block text-slate-800 font-extrabold text-xl tracking-tight mb-2'
+            <MaterialDesignInput
+              label='title'
+              errors={errors}
+              register={register}
             >
-              Title for database record
-            </label>
-            <input
-              type='text'
-              id='title'
-              {...register('title', { required: true })}
-              className='w-full bg-[#d9d9d9] text-slate-900 border rounded py-2 px-3'
-            />
-            {errors.title && (
-              <span className='text-red-500'>Title is required</span>
-            )}
+              <span className='text-slate-500 font-extrabold'>Title</span>
+            </MaterialDesignInput>
           </div>
-          <div className='border py-4'>
+          <div className='py-4'>
+            <label
+              htmlFor='countries'
+              className='block mb-2 text-xl font-extrabold tracking-tight text-slate-500 '
+            >
+              Select Category
+            </label>
             <Select
               register={register}
               errors={errors}
@@ -81,14 +74,14 @@ export default function CreatePost() {
           <div className='mb-4'>
             <label
               htmlFor='body'
-              className='block text-slate-800 font-extrabold tracking-tight mb-2'
+              className='block text-slate-500 font-extrabold tracking-tight mb-2'
             >
               Markdown content
             </label>
             <textarea
               id='content'
               {...register('content', { required: true })}
-              className='w-full  bg-[#d9d9d9]  text-slate-800 border rounded py-2 px-3'
+              className='w-full  bg-gray-50  text-slate-800 border rounded py-2 px-3'
             ></textarea>
             {errors.content && (
               <span className='text-red-500'>Content is required</span>
@@ -102,19 +95,8 @@ export default function CreatePost() {
             )}
           </section>
         </form>
-        <button
-          className='text-slate-800 px-4 py-2'
-          onClick={() => {
-            dispatch({
-              type: 'LOG_OUT',
-              payload: { user_id: undefined, token: undefined },
-            });
-          }}
-        >
-          log out
-        </button>
-        <Table />
       </div>
-    </div>
+      <Table />
+    </section>
   );
 }

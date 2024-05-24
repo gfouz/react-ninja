@@ -4,15 +4,17 @@ interface UpdatePostData {
   title: string;
   content: string;
 }
-interface MutationFnInterface { 
-  (data: UpdatePostData, url: string): Promise<any>; (arg0: UpdatePostData, arg1: any): Promise<unknown>; }
 
 const queryClient = new QueryClient();
 
-export const useUpdatePost = (fetchApi: MutationFnInterface, url: string) => {
+export const useMutationPostUpdate = (
+  fetchApi: (data: UpdatePostData, url: string, token: string | undefined) => Promise<any>,
+  url: string,
+  token: string | undefined,
+) => {
   const mutation = useMutation({
-    mutationFn: (data: UpdatePostData ) => {
-      return fetchApi(data, url);
+    mutationFn: (data: UpdatePostData) => {
+      return fetchApi(data, url, token);
     },
     onSuccess: () => {
       // Invalidate and refetch

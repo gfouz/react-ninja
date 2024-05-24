@@ -1,8 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 
+interface MobileMenuProps {
+  links: string[];
+  color?: string;
+}
+
 let regex = /\//g;
 
-const MobileMenu = (props) => {
+const MobileMenu = (props: MobileMenuProps) => {
   const { links, color } = props;
   let { pathname } = useLocation();
   return (

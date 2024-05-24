@@ -1,4 +1,3 @@
-import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, LoginInferData } from '../../schemas/login.schema.ts';
@@ -8,6 +7,7 @@ import { useLoginMutation } from '../../hooks/useLoginMutation.tsx';
 import GithubButton from '../../components/buttons/GithubButton.tsx';
 import GoogleButton from '../../components/buttons/GoogleButton.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
+import HomepageButton from '../../components/buttons/HomepageButton.tsx';
 import UsernameInput from './UsernameInput.tsx';
 import PasswordInput from './PasswordInput.tsx';
 import { useUserStore } from '../../store/userstore.ts';
@@ -21,14 +21,13 @@ const Login = () => {
     resolver: zodResolver(LoginSchema),
   });
   const dispatch = useUserStore((state) => state.dispatch);
-  const user = useUserStore((state) => state.user);
   const { mutation } = useLoginMutation(loginService);
   const onSubmit: SubmitHandler<LoginInferData> = async (data) => {
     const res = await mutation.mutateAsync(data);
     dispatch({ type: 'SET_USER', payload: res });
   };
 
-  console.log(mutation.failureReason);
+  console.log(mutation?.status);
 
   return (
     <div className='w-full h-[100vh] bg-slate-800'>
@@ -52,7 +51,12 @@ const Login = () => {
           <form className='mt-6' onSubmit={handleSubmit(onSubmit)}>
             <UsernameInput register={register} errors={errors} />
             <PasswordInput register={register} errors={errors} />
-            <SubmitButton />
+
+            {mutation?.status === 'success' ? (
+              <HomepageButton />
+            ) : (
+              <SubmitButton />
+            )}
           </form>
           {mutation.failureReason ? (
             <p className='text-red-500'>{`${mutation.failureReason}`}</p>

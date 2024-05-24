@@ -1,8 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
+interface DesktopMenuProps {
+  links: string[];
+  color?: string;
+}
 
 let regex = /\//g;
 
-const DesktopMenu = (props) => {
+const DesktopMenu = (props: DesktopMenuProps) => {
   const { links, color } = props;
   let { pathname } = useLocation();
   return (

@@ -37,6 +37,11 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
 }
 
+.selected_categories:checked {
+  color: #ffffff;
+  background-color: #334155;
+}
+
 h3 {
   margin-block-start: 1em;
 }
@@ -153,4 +158,18 @@ a {
   grid-gap: 5px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.opacity {
+  animation: opacity 1s;
+  transition: all 1s;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

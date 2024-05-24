@@ -2,15 +2,15 @@ import { CreatePostInterface } from '../schemas/post.schema.ts';
 
 export const createPostService = async (
   data: CreatePostInterface,
-  token: string,
+  token: string | undefined,
 ) => {
-  const url = 'http://127.0.0.1:8000/api/posts/create/newpost';
+  const url = 'http://127.0.0.1:8000/api/posts/create/post-category';
   try {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-       'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });

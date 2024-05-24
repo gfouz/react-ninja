@@ -10,6 +10,7 @@ import SubmitButton from './SubmitButton';
 import UsernameInput from './UsernameInput';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
+import LoginButton from '../../components/buttons/LoginButton.tsx';
 
 export interface FormInput {
   username: string;
@@ -54,7 +55,11 @@ export default function Register() {
             <UsernameInput register={register} errors={errors} />
             <EmailInput register={register} errors={errors} />
             <PasswordInput register={register} errors={errors} />
-            <SubmitButton />
+            {mutation?.status === 'success' ? (
+              <LoginButton />
+            ) : (
+              <SubmitButton />
+            )}
           </form>
           {mutation.failureReason ? (
             <p className='text-red-500'>{`${mutation.failureReason}`}</p>

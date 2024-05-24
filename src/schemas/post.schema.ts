@@ -2,7 +2,8 @@ import { z } from 'zod';
 
 export const CreatePostSchema = z.object({
   author_id: z.string(),
-  title: z.string().min(5, 'title is required'),
+  title: z.string().min(4, 'title is required'),
+  categories: z.array(z.string()),
   content: z.string().min(10, 'content is required'),
 });
 

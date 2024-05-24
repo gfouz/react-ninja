@@ -6,6 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import PostNavbar from '../../components/post/PostNavbar.tsx';
 import { usePostListQuery } from '../../hooks/usePostListQuery.tsx';
 import CommentsForm from '../../components/form/CommentsForm.tsx';
+import DashboardButton from '../../components/buttons/DashboardButton.tsx';
 
 export default function PostLayout() {
   const { slug } = useParams();
@@ -18,23 +19,7 @@ export default function PostLayout() {
     <>
       {post && (
         <div className='mx-auto px-4 py-8'>
-          <div className='fixed top-20 right-8 z-10 rounded-[50%] bg-gray-900 p-2 w-[40px] h-[40px]'>
-            <Link className='' to='/blog'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                fill='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  fill-rule='evenodd'
-                  d='M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z'
-                  clip-rule='evenodd'
-                />
-              </svg>
-            </Link>
-          </div>
+          <DashboardButton />
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             <div className='md:col-span-2'>
@@ -43,6 +28,9 @@ export default function PostLayout() {
                   {post?.title}
                 </h1>
                 <p className='text-gray-700 mb-6'>{published}</p>
+                <p className='text-gray-700 mb-6'>
+                  {post?.categories.map((cat) => cat.name)}
+                </p>
                 <img
                   src='https://via.placeholder.com/800x400'
                   alt='Post Image'

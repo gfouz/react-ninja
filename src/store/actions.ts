@@ -1,7 +1,7 @@
-export const updateLocalStorage = (state: PostStore) => {
+/* export const updateLocalStorage = (state: PostStore) => {
 	typeof window !== 'undefined' &&
 		window.localStorage.setItem('cart', JSON.stringify(state));
-};
+}; */
 
 export interface Post {
 	id: string;
@@ -47,7 +47,6 @@ export const actions: Actions = {
 			...state,
 			post,
 		};
-		updateLocalStorage(newState);
 		return newState;
 	},
 	[ACTION_TYPES.SET_TITLE]: (state: PostStore, action: Action) => {
@@ -69,7 +68,6 @@ export const actions: Actions = {
 			post,
 		};
 
-		updateLocalStorage(newState);
 		return newState;
 	},
 };
@@ -120,11 +118,8 @@ export const useractions: UserActions = {
 		};
 		return newState;
 	},
-	[USER_ACTION_TYPES.LOG_OUT]: (state: UserStore) => {
-		const user = {
-			user_id: undefined,
-			token: undefined,
-		};
+	[USER_ACTION_TYPES.LOG_OUT]: (state: UserStore, action: UserAction) => {
+		const user = { ...action.payload };
 		const newState = {
 			...state,
 			user,

@@ -15,21 +15,16 @@ const Table = () => {
 	React.useEffect(() => {
 		refetch();
 	}, [posts]);
-	console.log(data);
+	//console.log(data);
 	return (
-		<div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
+		<div className='relative mx-auto h-[fit-content] overflow-x-auto max-w-md  shadow-md sm:rounded-lg'>
 			<table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
 				<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
 					<tr>
 						<th scope='col' className='px-6 py-3'>
 							Title
 						</th>
-						<th scope='col' className='px-6 py-3'>
-							Author
-						</th>
-						<th scope='col' className='px-6 py-3'>
-							Date
-						</th>
+
 						<th scope='col' className='px-6 py-3'>
 							Actions
 						</th>
@@ -55,16 +50,12 @@ const Table = () => {
 										className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
 									>
 										<Link
-											className='no-underline text-yellow-300'
+											className='no-underline text-xs text-yellow-300'
 											to={`/published/${post?.slug}`}
 										>
-											{post?.title.toUpperCase()}
+											{post?.title}
 										</Link>
 									</th>
-									<td className='px-6 py-4'>{post.author?.username}</td>
-									<td className='px-6 py-4'>
-										{new Date(post?.created_at).toDateString()}
-									</td>
 
 									<td className=''>
 										<UpdateDeleteButton postId={post?.id} post={post} />

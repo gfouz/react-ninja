@@ -3,7 +3,7 @@ import Navbar from '../components/navbar/Navbar';
 import Footer from '../components/footer/Footer.tsx';
 import PostPreview from '../components/post/PostPreview.tsx';
 
-const links = ['/', '/login', '/blog', '/register', '/create/post'];
+const links = ['/', '/login', '/blog-dashboard', '/register', '/create/post'];
 
 const Blog = () => {
 	return (
@@ -20,7 +20,9 @@ const Blog = () => {
 					{/* Featured Section */}
 					<div className='col-span-1 lg:col-span-2'>
 						<div className='bg-white p-6 rounded-lg shadow-md'>
-							<h2 className=' text-3xl font-bold mb-4'>NINJA BLOG</h2>
+							<h2 className='text-gray-700 text-3xl font-extrabold tracking-tight mb-4'>
+								Ninja blog
+							</h2>
 							{/* Featured content goes here */}
 							<img src='images/blog.jpg' alt='' />
 						</div>
@@ -28,7 +30,9 @@ const Blog = () => {
 					{/* Sidebar */}
 					<div className='col-span-1'>
 						<div className='bg-white p-4 rounded-lg shadow-md'>
-							<h2 className='text-3xl font-semibold mb-4'>Overview</h2>
+							<h2 className='text-gray-700 text-3xl font-extrabold tracking-tight mb-4'>
+								Overview
+							</h2>
 							{/* Sidebar content goes here */}
 							<p
 								className=''
@@ -37,8 +41,8 @@ const Blog = () => {
 						</div>
 					</div>
 					{/* Recent Posts Section */}
-					<div className='col-span-1 lg:col-span-2'>
-						<div className='bg-white p-6 rounded-lg shadow-md pb-20'>
+					<div className='col-span-1 lg:col-span-2 py-8'>
+						<div className='bg-white p-6 py-14 rounded-lg shadow-md '>
 							<h2 className='text-center text-gray-700 text-3xl font-extrabold tracking-tight my-12'>
 								Recent Posts
 							</h2>

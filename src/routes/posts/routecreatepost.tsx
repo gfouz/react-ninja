@@ -1,9 +1,9 @@
-import CreatePost from '../../components/post/CreatePost';
+import PostCreate from '../../components/post/PostCreate.tsx';
 
 const RouteCreatePost = () => {
   return (
-    <div className='w-full p-4'>
-      <CreatePost />
+    <div className='w-full min-h-screen bg-gray-200 p-10'>
+      <PostCreate />
     </div>
   );
 };

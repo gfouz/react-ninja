@@ -3,13 +3,13 @@ import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import HamburgerButton from '../buttons/HamburgerButton';
 
-interface INavbar {
+interface NavbarProps {
   links: string[];
   color?: string;
   background?: string;
 }
 
-const Navbar = (props) => {
+const Navbar = (props: NavbarProps) => {
   const { links, color, background } = props;
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleNavbar = () => {

@@ -1,15 +1,16 @@
-import { FieldErrors, Path, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
+import { ContactInterface } from '/schemas/contact.schema';
 
-type InputProps = {
-	register: UseFormRegister<{ email: string }>;
+type EmailInputProps = {
+	register: UseFormRegister<ContactInterface>;
 };
 
-const EmailsInput = ({ register }: InputProps) => {
+const EmailsInput = ({ register }: EmailInputProps) => {
 	return (
 		<>
 			<div className='relative w-full'>
 				<label
-					for='email'
+					htmlFor='email'
 					className='hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
 				>
 					Email address
@@ -42,3 +43,6 @@ const EmailsInput = ({ register }: InputProps) => {
 };
 
 export default EmailsInput;
+
+//https://github.com/gfouz/react-ninja
+//https://github.com/gfouz/ninja-server

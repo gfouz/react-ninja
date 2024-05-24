@@ -1,4 +1,3 @@
-import Form from '../form/Form';
 import CommentsForm from '../../components/form/CommentsForm.tsx';
 
 interface IFooter {

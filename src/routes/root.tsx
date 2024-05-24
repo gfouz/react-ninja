@@ -1,11 +1,9 @@
 import Navbar from '../components/navbar/Navbar';
 import MotionOnScroll from '../components/framer-motion/MotionOnScroll.tsx';
-import { motion, Variants } from 'framer-motion';
-import { rotateX } from '../components/framer-motion/MotionOnScroll.tsx';
 import { opacity, zoom } from '../components/framer-motion/MotionOnScroll.tsx';
 import { blog_overview, about } from './content.ts';
-
-const links = ['/', '/register', '/login', '/blog'];
+import QuoteSlideshow from '../components/slideshow/QuoteSlideshow.tsx';
+const links = ['/', '/register', '/login', '/blog-dashboard'];
 
 const Root = () => {
   return (
@@ -22,7 +20,7 @@ const Root = () => {
         <section className='grid place-items-center w-[100%] aspect-[1.85] bg-slate-800'>
           <div className='grid place-items-center text-center'>
             <img
-              className='girl-motion max-w-[200px]'
+              className='girl-motion max-w-[200px] '
               src='images/www.png'
               alt='welcome'
             />
@@ -44,7 +42,13 @@ const Root = () => {
             {/* Your projects here */}
             <div className='text-blue-100 p-6 rounded-lg border border-gray-500'>
               <div className='grid place-items-center aspect-[600/400] text-center rounded-lg'>
-                <img src='images/blog.jpg' alt='' />
+                <div className='rounded-lg border border-gray-700 overflow-hidden'>
+                  <img
+                    className='transition-all hover:scale-[1.2]'
+                    src='images/blog.jpg'
+                    alt=''
+                  />
+                </div>
               </div>
               <h3 className='text-xl font-bold mb-2 text-blue-100'>
                 Ninja Blog
@@ -56,7 +60,13 @@ const Root = () => {
             </div>
             <div className='text-blue-100 p-6 rounded-lg border border-gray-500'>
               <div className='grid place-items-center aspect-[600/400] text-center '>
-                <img src='images/finances.jpg' alt='' />
+                <div className='rounded-lg border border-gray-700 overflow-hidden'>
+                  <img
+                    className='transition-all hover:scale-[1.2]'
+                    src='images/finances.jpg'
+                    alt=''
+                  />
+                </div>
               </div>
               <h3 className='text-xl font-bold mb-2'>Finances App</h3>
               <p
@@ -66,7 +76,13 @@ const Root = () => {
             </div>
             <div className='text-blue-100 p-6 rounded-lg border border-gray-500'>
               <div className='grid place-items-center aspect-[600/400] text-center rounded-lg transition-all'>
-                <img className='' src='images/cart.png' alt='' />
+                <div className='rounded-lg border border-gray-700 overflow-hidden'>
+                  <img
+                    className='transition-all hover:scale-[1.2]'
+                    src='images/shopping.jpg'
+                    alt=''
+                  />
+                </div>
               </div>
               <h3 className='text-xl font-bold mb-2'>Ecommerce</h3>
               <p
@@ -83,6 +99,7 @@ const Root = () => {
               src='images/fouz-stack.png'
               alt=''
             />
+
             <MotionOnScroll
               className='w-full h-full absolute top-0 left-0 flex items-center'
               variants={zoom}
@@ -100,13 +117,8 @@ const Root = () => {
           <h3 className=' text-center text-3xl font-extrabold tracking-tight text-blue-100  my-6'>
             About me
           </h3>
-          <article className='p-6'>
-            <img
-              className='float-left mr-2 max-w-[40px] relative top-2'
-              src='images/avatar.png'
-              alt='fouz-avatar'
-            />
-            <p className='text-blue-100'>{about.col_one}</p>
+          <article className='p-6 min-h-[350px]'>
+            <QuoteSlideshow />
           </article>
         </div>
       </main>
