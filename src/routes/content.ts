@@ -1,10 +1,32 @@
-export const projects = {
-  blog: `"Embarking on a journey with React for front-end and <a href="https://django.com">Django Ninja</a> 
+export const projects = [
+  {
+    image: 'blog.jpg',
+    title: 'Django Ninja blog',
+    content: `"Embarking on a journey with React for front-end and <a href="https://django.com">Django Ninja</a> 
+    for back-end empowers developers with a versatile and dynamic toolkit. 
+    Building interactive user interfaces with 
+    React's component-based architecture, while Django Ninja handles the heavy 
+    lifting of RESTful APIs and backend logic.`,
+  },
+  {
+    image: 'blog.jpg',
+    title: 'Django Ninja blog',
+    content: `"Embarking on a journey with React for front-end and <a href="https://django.com">Django Ninja</a> 
     for back-end empowers developers with a versatile and dynamic toolkit. 
     Imagine seamlessly crafting interactive user interfaces with 
     React's component-based architecture, while Django Ninja handles the heavy 
     lifting of RESTful APIs and backend logic.`,
-};
+  },
+  {
+    image: 'blog.jpg',
+    title: 'Django Ninja blog',
+    content: `"Embarking on a journey with React for front-end and <a href="https://django.com">Django Ninja</a> 
+    for back-end empowers developers with a versatile and dynamic toolkit. 
+    Imagine seamlessly crafting interactive user interfaces with 
+    React's component-based architecture, while Django Ninja handles the heavy 
+    lifting of RESTful APIs and backend logic.`,
+  },
+];
 
 export const about = {
   col_one: `Web developer focused on ReactJs and 

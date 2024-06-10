@@ -1,7 +1,7 @@
-import { CreatePostInterface } from '../schemas/post.schema.ts';
+import { CreatePostInferface } from '../schemas/post.schema.ts';
 
 export const createPostService = async (
-  data: CreatePostInterface,
+  data: CreatePostInferface,
   token: string | undefined,
 ) => {
   const url = 'http://127.0.0.1:8000/api/posts/create/post-category';

@@ -11,7 +11,7 @@ const Blog = () => {
 			{/* Navbar */}
 			<header className='bg-blue-500'>
 				<div className='mx-auto px-4'>
-					<Navbar links={links} color='#ffffff' background='#3B82F6' />
+					<Navbar links={links} color='text-white' background='bg-blue-500' />
 				</div>
 			</header>
 			{/* Main Content */}
@@ -53,7 +53,10 @@ const Blog = () => {
 				</div>
 			</div>
 			{/* Footer */}
-			<Footer color='#f1f1f1' background='#111827' />
+			<Footer
+				color='text-slate-200 font-bold tracking-wide'
+				background='bg-slate-800'
+			/>
 		</div>
 	);
 };

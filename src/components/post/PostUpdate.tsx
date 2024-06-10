@@ -4,20 +4,21 @@ import { useUserStore } from '../../store/userstore.ts';
 
 import {
   UpdatePostSchema,
-  UpdatePostInterface,
+  UpdatePostInferface,
 } from '../../schemas/post.schema';
 import { postUpdateService } from '../../services/postUpdateService.ts';
 import { useMutationPostUpdate } from '../../hooks/useMutationPostUpdate.tsx';
 import { usePostStore } from '../../store/store.ts';
 import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
+import Input from './UpdateInput.tsx'
 
 export default function PostUpdate() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UpdatePostInterface>({
+  } = useForm<UpdatePostInferface>({
     resolver: zodResolver(UpdatePostSchema),
   });
   const user = useUserStore((state) => state.user);
@@ -29,8 +30,8 @@ export default function PostUpdate() {
     user?.token,
   );
 
-  const onSubmit: SubmitHandler<UpdatePostInterface> = async (
-    data: UpdatePostInterface,
+  const onSubmit: SubmitHandler<UpdatePostInferface> = async (
+    data: UpdatePostInferface,
   ) => {
     await mutation.mutateAsync(data);
   };
@@ -38,7 +39,7 @@ export default function PostUpdate() {
   return (
     <div className='container relative mx-auto my-12 max-w-[1000px] p-12 rounded bg-emerald-950'>
       <div className='absolute top-0 right-0'>
-        <CancelButton content='go back' />
+        <CancelButton />
       </div>
       <h2 className='text-2xl text-emerald-300 font-bold mb-4'>Update Post</h2>
       <form className='' onSubmit={handleSubmit(onSubmit)}>
@@ -49,12 +50,13 @@ export default function PostUpdate() {
           >
             Title
           </label>
-          <input
-            type='text'
-            defaultValue={post?.title}
-            {...register('title', { required: true })}
-            className='w-full bg-emerald-950 text-emerald-200 border rounded py-2 px-3'
-          />
+          <Input
+              color='primary'
+              label='title'
+              errors={errors}
+              register={register}
+              placeholder='Choose a title'
+            />
           {errors.title && (
             <span className='text-red-500'>Title is required</span>
           )}
@@ -77,7 +79,7 @@ export default function PostUpdate() {
         </div>
         <section className='sm:flex items-center md:py-12 my-12'>
           <SubmitButton />
-          <CancelButton color='red' />
+          <CancelButton />
         </section>
       </form>
       {mutation?.failureReason ? (

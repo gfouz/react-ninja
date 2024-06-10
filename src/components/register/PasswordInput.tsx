@@ -1,33 +1,32 @@
-import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import { RegisterInput } from '../../schemas/register.schema';
+import React from 'react';
+import { Input } from '@nextui-org/input';
+import EyeButton from '../buttons/EyeButton';
+import { InputProps } from '../types';
 
-type Props = {
-  register: UseFormRegister<RegisterInput>;
-  errors: FieldErrors<RegisterInput>;
-};
+type labels = 'username' | 'email' | 'password' | 'confirmPassword';
 
-const PasswordInput = ({ register, errors }: Props) => {
+
+const PasswordInput = ({ color, label, errors, register }: InputProps<labels>) => {
+  const [type, setType] = React.useState('password');
   return (
-    <div className='relative mt-3'>
-      <input
-        className='appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline'
-        id='username'
-        type='text'
-        placeholder='Password'
-        {...register('password')}
-      />
-      <div className='absolute left-0 inset-y-0 flex items-center'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          className='h-7 w-7 ml-3 text-gray-400 p-1'
-          viewBox='0 0 20 20'
-          fill='currentColor'
-        >
-          <path d='M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z' />
-        </svg>
+    <>
+      <div className='w-full'>
+        <label htmlFor={label} className='my-4'>
+          {label.toLowerCase().charAt(0).toUpperCase() + label.slice(1)}
+        </label>
+        <Input
+          type={type}
+          color={color}
+          variant='underlined'
+          placeholder='Enter your Password'
+          {...register('password')}
+          isInvalid={errors?.password?.message ? true : false}
+          errorMessage={`${errors?.password?.message}`}
+          endContent={<EyeButton color={color} type={type} setType={setType} />}
+        />
       </div>
-      {errors.password?.message ? <p>{`${errors.password?.message}`}</p> : null}
-    </div>
+    </>
   );
 };
+
 export default PasswordInput;

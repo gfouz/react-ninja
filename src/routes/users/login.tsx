@@ -1,16 +1,13 @@
-import Navbar from '../../components/navbar/Navbar.tsx';
-import Login from '../../components/login/Login.tsx';
 import EnterpriseLogin from '../../components/login/EnterpriseLogin.tsx';
 
-const links = ['/', '/register', '/login', '/blog-dashboard'];
+import Layout from '../../components/layout/Layout.tsx';
+
 
 const LoginPage = () => {
   return (
-    <>
-      <Navbar links={links} />
-      {/*<Login />*/}
+    <Layout color='text-slate-100' background='bg-slate-800 border-yellow-100'>
       <EnterpriseLogin />
-    </>
+    </Layout>
   );
 };
 

@@ -22,10 +22,10 @@ const EditButton = ({ post }: EditButtonProps) => {
 				navigate('/update/post');
 			}}
 			type='button'
-			className='flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200'
+			className='text-gray-100'
 		>
 			<svg
-				className='w-4 h-4 mr-2'
+				className='w-4 h-4 mr-2 hover:bg-gray-500'
 				xmlns='http://www.w3.org/2000/svg'
 				viewBox='0 0 20 20'
 				fill='currentColor'
@@ -38,7 +38,6 @@ const EditButton = ({ post }: EditButtonProps) => {
 					d='M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z'
 				/>
 			</svg>
-			Edit
 		</button>
 	);
 };

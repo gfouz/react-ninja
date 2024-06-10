@@ -1,11 +1,11 @@
 import { useMutation, QueryClient } from '@tanstack/react-query';
-import { CreatePostInterface } from '../schemas/post.schema.ts';
+import { CreatePostInferface } from '../schemas/post.schema.ts';
 
 const queryClient = new QueryClient();
 
 type MutationFunctionType = {
-  (data: CreatePostInterface, token: string | undefined): Promise<any>;
-  (arg0: CreatePostInterface, arg1: string): any;
+  (data: CreatePostInferface, token: string | undefined): Promise<any>;
+  (arg0: CreatePostInferface, arg1: string): any;
 };
 
 export const useCreatePostMutation = (
@@ -13,7 +13,7 @@ export const useCreatePostMutation = (
   token: string | undefined,
 ) => {
   const mutation = useMutation({
-    mutationFn: (data: CreatePostInterface) => {
+    mutationFn: (data: CreatePostInferface) => {
       return fetchApi(data, token);
     },
     onSuccess: () => {

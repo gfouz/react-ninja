@@ -7,7 +7,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -18,26 +18,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "/*": ["./src/*"],
-      "components/*": ["./src/components/*"],
-      "icons/*": ["./src/icons/*"],
-      "data/*": ["./src/data/*"],
-      "hooks/*": ["./src/hooks/*"],
-      "layout/*": ["./src/layout/*"],
-      "constants/*": ["./src/constants/*"],
-      "interfaces/*": ["./src/interfaces/*"],
-      "services/*": ["./src/services/*"],
-      "store/*": ["./src/store/*"],
-      "schemas/*": ["./src/schemas/*"],
-      "images/*": ["./public/images/*"],
-      "fonts/*": ["./public/fonts/*"],
-      "scss-components/*": ["./src/scss/components/*"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
-
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

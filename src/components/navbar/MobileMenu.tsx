@@ -18,7 +18,7 @@ const MobileMenu = (props: MobileMenuProps) => {
             <Link
               to={link}
               style={{ color: color }}
-              className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
+              className={`${color} hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
             >
               <span>
                 {pathname !== link ? link.replace(regex, ' ') : null}{' '}
@@ -32,3 +32,5 @@ const MobileMenu = (props: MobileMenuProps) => {
   );
 };
 export default MobileMenu;
+
+// pip install pyinstaller      pyinstaller --onefile --windowed mi_aplicacion.py

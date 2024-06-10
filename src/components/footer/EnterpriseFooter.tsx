@@ -50,7 +50,7 @@ const EnterpriseFooter = () => {
         </div>
         {/* Bottom */}
         <div className='mt-8 border-t border-gray-800 pt-4 text-sm text-center'>
-          <p>&copy; 2024 Your Company. All rights reserved.</p>
+          <p>&copy; 2024 software developer. Fouz.dev.</p>
         </div>
       </div>
     </footer>

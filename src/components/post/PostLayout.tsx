@@ -64,14 +64,14 @@ export default function PostLayout() {
             </div>
 
             <div className='md:col-span-1'>
-              <div className='relative bg-gray-900 rounded-lg shadow-md p-6 my-8'>
+              <div className='relative bg-[#003249] rounded-lg shadow-md p-6 my-8'>
                 <h2 className='text-white text-3xl sm:text-4xl font-bold mb-4'>
                   Learn more
                 </h2>
                 <PostNavbar />
                 <hr className='my-4 bg-[#000000]' />
               </div>
-              <CommentsForm />
+              <CommentsForm background='#003249' />
             </div>
           </div>
         </div>

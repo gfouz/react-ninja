@@ -1,5 +1,5 @@
 import { UseFormRegister } from 'react-hook-form';
-import { ContactInterface } from '/schemas/contact.schema';
+import { ContactInterface } from '../../schemas/contact.schema.ts';
 
 type EmailInputProps = {
 	register: UseFormRegister<ContactInterface>;
@@ -11,7 +11,7 @@ const EmailsInput = ({ register }: EmailInputProps) => {
 			<div className='relative w-full'>
 				<label
 					htmlFor='email'
-					className='hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+					className='hidden sr-only mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
 				>
 					Email address
 				</label>

@@ -1,5 +1,6 @@
 import React from 'react';
 import EyeButton from '../buttons/EyeButton';
+import Errors from '../errors/Errors.tsx';
 import { FieldErrors, Path, UseFormRegister } from 'react-hook-form';
 
 interface InputProps {
@@ -11,7 +12,7 @@ interface InputProps {
 }
 
 const MaterialDesignInput = (props: InputProps) => {
-	const [_type, setType] = React.useState('text');
+	const [_type, setType] = React.useState('password');
 
 	const { errors, register, children, type, label } = props;
 
@@ -35,7 +36,7 @@ const MaterialDesignInput = (props: InputProps) => {
 			</div>
 			<div>
 				{errors[label]?.message ? (
-					<p className='text-rose-500 tracking-tight font-extrabold text-xs relative top-[-2.5em]'>{`${errors[label]?.message}`}</p>
+					<Errors error={`${errors[label]?.message}`} />
 				) : null}
 			</div>
 		</>

@@ -13,20 +13,15 @@ const UpdateDeleteButton = ({ postId, post }: CrudButtonProps) => {
 	const [isDelete, setIsDelete] = React.useState(false);
 
 	return (
-		<div className='flex'>
-			<div className='z-10 w-44 '>
-				<ul className='flex py-1 text-sm'>
-					<li>
-						<EditButton post={post} />
-					</li>
-					<li>
-						{isDelete === true ? (
-							<DeleteWarning postId={postId} />
-						) : (
-							<DeleteButton setIsDelete={setIsDelete} />
-						)}
-					</li>
-				</ul>
+		<div className=''>
+			<div className='flex justify-evenly p-1 px-2 border rounded-xl'>
+				<EditButton post={post} />
+
+				{isDelete === true ? (
+					<DeleteWarning postId={postId} />
+				) : (
+					<DeleteButton setIsDelete={setIsDelete} />
+				)}
 			</div>
 		</div>
 	);

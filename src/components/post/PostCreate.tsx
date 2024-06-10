@@ -1,21 +1,20 @@
 import { useUserStore } from '../../store/userstore.ts';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm  } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createPostService } from '../../services/createPostService.tsx';
 import { useCreatePostMutation } from '../../hooks/useCreatePostMutation';
 import { useCategoriesQuery } from '../../hooks/useCategoriesQuery.tsx';
-import Table from '../../components/table/Table.tsx';
-import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
-import GotoLoginButton from '../../components/buttons/GoToLoginButton.tsx';
-import Select from '../../components/select/Select.tsx';
-import DashboardButton from '../../components/buttons/DashboardButton.tsx';
-import MaterialDesignInput from '../../components/input/MaterialDesignInput.tsx';
+import SignInButton from '../../components/buttons/SignInButton.tsx';
+import ResponsiveTable from '../../components/table/ResponsiveTable.tsx';
+import Select from '../../components/select/NextSelect.tsx';
+import Textarea from '../../components/textarea/TextArea.tsx';
 
 import {
   CreatePostSchema,
-  CreatePostInterface,
+  CreatePostInferface,
 } from '../../schemas/post.schema';
+import Input  from './Input.tsx';
 
 export default function CreatePost() {
   const user = useUserStore((state) => state.user);
@@ -23,23 +22,22 @@ export default function CreatePost() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreatePostInterface>({
+  } = useForm<CreatePostInferface>({
     resolver: zodResolver(CreatePostSchema),
   });
 
-  const dispatch = useUserStore((state) => state.dispatch);
   const { mutation } = useCreatePostMutation(createPostService, user?.token);
   const { categories } = useCategoriesQuery();
+  const default_categories = [{name:"science"}, {name:"technology"},{ name: "python"}]
 
-  const onSubmit: SubmitHandler<CreatePostInterface> = async (data) => {
+  const onSubmit: SubmitHandler<CreatePostInferface> = async (data) => {
+    //@ts-ignore
+    data.categories = data.categories.split(',');
     await mutation.mutateAsync(data);
-    console.log('this is data: ' + JSON.stringify(data));
   };
-
-  console.log(categories);
   return (
-    <section className='md:flex justify-evenly'>
-      <div className='mx-auto mb-4 bg-white p-8 rounded-lg shadow-lg w-full max-w-md'>
+    <section className='py-12 flex flex-col items-center md:flex-row justify-evenly md:items-start'>
+      <div className='mb-4 bg-slate-100 p-8 rounded-lg shadow-lg w-full max-w-md'>
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-10 text-center'>
           Create Post
         </h2>
@@ -50,53 +48,50 @@ export default function CreatePost() {
             {...register('author_id')}
           />
           <div className='mb-4'>
-            <MaterialDesignInput
+            <label
+              htmlFor='categories'
+              className='block mb-2 text-sm font-semibold text-slate-500 '
+            >
+              Choose a title
+            </label>
+            <Input
+              color='primary'
               label='title'
               errors={errors}
               register={register}
-            >
-              <span className='text-slate-500 font-extrabold'>Title</span>
-            </MaterialDesignInput>
+              placeholder='Choose a title'
+            />
           </div>
+
           <div className='py-4'>
             <label
-              htmlFor='countries'
-              className='block mb-2 text-xl font-extrabold tracking-tight text-slate-500 '
+              htmlFor='categories'
+              className='block mb-2 text-sm font-semibold text-slate-500 '
             >
               Select Category
             </label>
+
             <Select
               register={register}
               errors={errors}
-              categories={categories}
+              categories={categories ? categories : default_categories}
             />
           </div>
+
           <div className='mb-4'>
-            <label
-              htmlFor='body'
-              className='block text-slate-500 font-extrabold tracking-tight mb-2'
-            >
+            <label className='block text-sm text-slate-500 font-semibold mb-2'>
               Markdown content
             </label>
-            <textarea
-              id='content'
-              {...register('content', { required: true })}
-              className='w-full  bg-gray-50  text-slate-800 border rounded py-2 px-3'
-            ></textarea>
-            {errors.content && (
-              <span className='text-red-500'>Content is required</span>
-            )}
+            <Textarea register={register} errors={errors} />
           </div>
           <section className='sm:flex items-center md:py-12 my-12'>
-            {user?.user_id === undefined ? (
-              <GotoLoginButton />
-            ) : (
-              <SubmitButton />
-            )}
+            {user?.user_id === undefined ? <SignInButton /> : <SubmitButton />}
           </section>
         </form>
       </div>
-      <Table />
+      <div>
+        <ResponsiveTable />
+      </div>
     </section>
   );
 }

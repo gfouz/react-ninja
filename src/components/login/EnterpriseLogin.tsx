@@ -3,14 +3,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, LoginInferData } from '../../schemas/login.schema.ts';
 import { loginService } from '../../services/loginService.ts';
 import { useLoginMutation } from '../../hooks/useLoginMutation.tsx';
-
-import GithubButton from '../../components/buttons/GithubButton.tsx';
-import GoogleButton from '../../components/buttons/GoogleButton.tsx';
-import OutlineButton from '../../components/buttons/OutlineButton.tsx';
-import HomepageButton from '../../components/buttons/HomepageButton.tsx';
-import MaterialDesignInput from '../../components/input/MaterialDesignInput.tsx';
-import PasswordInput from './PasswordInput.tsx';
+import CancelButton from '../../components/buttons/CancelButton.tsx';
+import SuccessButton from '../../components/buttons/SuccessButton.tsx';
 import { useUserStore } from '../../store/userstore.ts';
+import { Button } from '@nextui-org/button';
+import Input from '../../components/input/Input.tsx';
+import PasswordInput from '../../components/input/PasswordInput.tsx';
 
 const EnterpriseLogin = () => {
   const {
@@ -28,36 +26,43 @@ const EnterpriseLogin = () => {
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-100'>
-      <div className='bg-white p-8 rounded-lg shadow-lg w-full max-w-md'>
+    <div className='min-h-screen flex items-center justify-center bg-slate-800 '>
+      <div className='bg-slate-900 p-8 rounded-3xl shadow-lg w-full max-w-md '>
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-6 text-center'>
           Sign In
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='my-16'>
-            <div className='relative z-0 w-full mb-5 group'>
-              <MaterialDesignInput errors={errors} register={register}>
-                Username
-              </MaterialDesignInput>
+          <div className='my-24'>
+            <div className='w-full mb-5'>
+              <Input
+                color='secondary'
+                label='username'
+                errors={errors}
+                register={register}
+                placeholder='Enter your Username'
+              />
             </div>
           </div>
           <div className='my-16'>
-            <div className='relative z-0 w-full mb-5 group'>
-              <MaterialDesignInput
+            <div className='w-full mb-5'>
+              <PasswordInput
                 label='password'
-                type='password'
+                color='secondary'
                 errors={errors}
                 register={register}
-              >
-                Password
-              </MaterialDesignInput>
+              />
             </div>
           </div>
 
           {mutation?.status === 'success' ? (
-            <HomepageButton />
+            <SuccessButton />
           ) : (
-            <OutlineButton>Submit</OutlineButton>
+            <div className='flex justify-evenly p-4 my-8'>
+              <Button color='primary' type='submit' className='px-10'>
+                Sign In
+              </Button>
+              <CancelButton />
+            </div>
           )}
         </form>
         {mutation.failureReason ? (
