@@ -36,7 +36,6 @@ export const useContactService = () => {
 
       if (!response.ok) throw new Error(response.statusText);
 
-
       setData({ ...data, ok: response.ok, status: response.status });
     } catch (err) {
       setError({ ...error, message: (err as Error).message });

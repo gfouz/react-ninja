@@ -5,11 +5,9 @@ interface PostData {
 }
 interface MutationFnInterface {
   (data: any): Promise<any>;
-  (data: {
-    username: string;
-    email: string;
-    password: string;
-  }): Promise<any>;(data: { username: string; password: string; }): Promise<any>;(arg0: PostData): Promise<unknown>;
+  (data: { username: string; email: string; password: string }): Promise<any>;
+  (data: { username: string; password: string }): Promise<any>;
+  (arg0: PostData): Promise<unknown>;
 }
 const queryClient = new QueryClient();
 

@@ -2,24 +2,21 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useUserStore } from '../../store/userstore.ts';
 
-import {
-  UpdatePostSchema,
-  UpdatePostInferface,
-} from '../../schemas/post.schema';
+import { PostUpdateSchema, Post } from '../../schemas/post.schema';
 import { postUpdateService } from '../../services/postUpdateService.ts';
 import { useMutationPostUpdate } from '../../hooks/useMutationPostUpdate.tsx';
 import { usePostStore } from '../../store/store.ts';
 import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
-import Input from './UpdateInput.tsx'
+import Input from './Input.tsx';
 
 export default function PostUpdate() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UpdatePostInferface>({
-    resolver: zodResolver(UpdatePostSchema),
+  } = useForm<Post>({
+    resolver: zodResolver(PostUpdateSchema),
   });
   const user = useUserStore((state) => state.user);
   const post = usePostStore((state) => state.post);
@@ -30,8 +27,8 @@ export default function PostUpdate() {
     user?.token,
   );
 
-  const onSubmit: SubmitHandler<UpdatePostInferface> = async (
-    data: UpdatePostInferface,
+  const onSubmit: SubmitHandler<Post> = async (
+    data: Post,
   ) => {
     await mutation.mutateAsync(data);
   };
@@ -51,12 +48,12 @@ export default function PostUpdate() {
             Title
           </label>
           <Input
-              color='primary'
-              label='title'
-              errors={errors}
-              register={register}
-              placeholder='Choose a title'
-            />
+            color='primary'
+            label='title'
+            errors={errors}
+            register={register}
+            placeholder='Choose a title'
+          />
           {errors.title && (
             <span className='text-red-500'>Title is required</span>
           )}

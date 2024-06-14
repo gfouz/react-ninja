@@ -1,8 +1,8 @@
 import { useUserStore } from '../../store/userstore.ts';
-import { SubmitHandler, useForm  } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createPostService } from '../../services/createPostService.tsx';
-import { useCreatePostMutation } from '../../hooks/useCreatePostMutation';
+import { useMutationCreatePost } from '../../hooks/useMutationCreatePost.tsx';
 import { useCategoriesQuery } from '../../hooks/useCategoriesQuery.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
 import SignInButton from '../../components/buttons/SignInButton.tsx';
@@ -10,11 +10,8 @@ import ResponsiveTable from '../../components/table/ResponsiveTable.tsx';
 import Select from '../../components/select/NextSelect.tsx';
 import Textarea from '../../components/textarea/TextArea.tsx';
 
-import {
-  CreatePostSchema,
-  CreatePostInferface,
-} from '../../schemas/post.schema';
-import Input  from './Input.tsx';
+import { Post, PostCreateSchema} from '../../schemas/post.schema';
+import Input from './Input.tsx';
 
 export default function CreatePost() {
   const user = useUserStore((state) => state.user);
@@ -22,15 +19,19 @@ export default function CreatePost() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreatePostInferface>({
-    resolver: zodResolver(CreatePostSchema),
+  } = useForm<Post>({
+    resolver: zodResolver(PostCreateSchema),
   });
 
-  const { mutation } = useCreatePostMutation(createPostService, user?.token);
+  const { mutation } = useMutationCreatePost(createPostService, user?.token);
   const { categories } = useCategoriesQuery();
-  const default_categories = [{name:"science"}, {name:"technology"},{ name: "python"}]
+  const default_categories = [
+    { name: 'science' },
+    { name: 'technology' },
+    { name: 'python' },
+  ];
 
-  const onSubmit: SubmitHandler<CreatePostInferface> = async (data) => {
+  const onSubmit: SubmitHandler<Post> = async (data) => {
     //@ts-ignore
     data.categories = data.categories.split(',');
     await mutation.mutateAsync(data);

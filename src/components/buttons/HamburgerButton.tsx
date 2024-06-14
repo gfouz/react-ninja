@@ -8,7 +8,7 @@ interface Props {
 const HamburgerButton = ({ isOpen, toggleNavbar }: Props) => {
   return (
     <button
-      onClick={()=> toggleNavbar( st => !st )}
+      onClick={() => toggleNavbar((st) => !st)}
       type='button'
       className='text-gray-300 hover:bg-gray-700 hover:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'
       aria-controls='mobile-menu'

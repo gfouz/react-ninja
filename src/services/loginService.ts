@@ -1,8 +1,8 @@
-import { LoginInferData } from '../schemas/login.schema';
+import { Auth } from '../schemas/auth.schema';
 
 const url = 'http://127.0.0.1:8000/api/users/login';
 
-export const loginService = async (data: LoginInferData) => {
+export const loginService = async (data: Auth) => {
   try {
     const response = await fetch(url, {
       method: 'POST',

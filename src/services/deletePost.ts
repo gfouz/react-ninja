@@ -6,7 +6,7 @@ export const deletePost = async (url: string, token: string | undefined) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 

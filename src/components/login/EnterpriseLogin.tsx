@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginSchema, LoginInferData } from '../../schemas/login.schema.ts';
+import { LoginSchema, Auth } from '../../schemas/auth.schema.ts';
 import { loginService } from '../../services/loginService.ts';
 import { useLoginMutation } from '../../hooks/useLoginMutation.tsx';
 import CancelButton from '../../components/buttons/CancelButton.tsx';
@@ -15,19 +15,19 @@ const EnterpriseLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginInferData>({
+  } = useForm<Auth>({
     resolver: zodResolver(LoginSchema),
   });
   const dispatch = useUserStore((state) => state.dispatch);
   const { mutation } = useLoginMutation(loginService);
-  const onSubmit: SubmitHandler<LoginInferData> = async (data) => {
+  const onSubmit: SubmitHandler<Auth> = async (data) => {
     const res = await mutation.mutateAsync(data);
     dispatch({ type: 'SET_USER', payload: res });
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-slate-800 '>
-      <div className='bg-slate-900 p-8 rounded-3xl shadow-lg w-full max-w-md '>
+    <div className='min-h-screen flex items-center justify-center bg-slate-800'>
+      <div className='dark bg-slate-900 p-8 rounded-3xl shadow-lg w-full max-w-md '>
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-6 text-center'>
           Sign In
         </h2>

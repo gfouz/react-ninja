@@ -3,7 +3,7 @@ interface Props {
   color: string;
 }
 
-export default function FouzLogo({ size=24, color }: Props) {
+export default function FouzLogo({ size = 24, color }: Props) {
   return (
     <svg width={size} height='auto' viewBox='0 0 224 252' id='svg37575'>
       <defs id='defs37572'>

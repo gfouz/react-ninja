@@ -1,4 +1,4 @@
-import { CreatePostInferface } from '../schemas/post.schema.ts';
+import { Post } from '../schemas/post.schema.ts';
 
 export const getPostService = async (url: string) => {
   try {
@@ -47,16 +47,18 @@ export const getPostListService = async () => {
   }
 };
 
-
-export const updatePostService = async (data:{title:string; content:string;}, url: string) => {
+export const updatePostService = async (
+  data: { title: string; content: string },
+  url: string,
+) => {
   // const url = `http://127.0.0.1:8000/api/posts/update/post/${postId}`;
-  const token= undefined;
+  const token = undefined;
   try {
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -74,7 +76,7 @@ export const updatePostService = async (data:{title:string; content:string;}, ur
 };
 
 export const createPostService = async (
-  data: CreatePostInferface,
+  data: Post,
   token: string,
 ) => {
   const url = 'http://127.0.0.1:8000/api/posts/create/newpost';
@@ -83,7 +85,7 @@ export const createPostService = async (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-       'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -108,7 +110,7 @@ export const deletePost = async (url: string, token: string) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 

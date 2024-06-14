@@ -1,5 +1,5 @@
 import Layout from '../../components/layout/Layout.tsx';
-import MaterialDesignSignUp from '../../components/register/MaterialDesignSignUp.tsx';
+import MaterialDesignSignUp from '../../components/register/EnterpriseRegister.tsx';
 
 const RegisterPage = () => {
   return (

@@ -1,16 +1,16 @@
+import { Spacer } from '@nextui-org/spacer';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { RegisterSchema, RegisterInput } from '../../schemas/register.schema';
+import { RegisterSchema, Auth } from '../../schemas/auth.schema.ts';
 import { registerService } from '../../services/registerService';
 import { useRegisterMutation } from '../../hooks/useRegisterMutation';
 
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
 import LoginButton from '../../components/buttons/LoginButton.tsx';
 
-import PasswordInput from './PasswordInput.tsx';
+import Input from '../../components/input/Input.tsx';
+import PasswordInput from '../../components/input/PasswordInput.tsx';
 import ConfirmPassword from '../../components/input/ConfirmPassword.tsx';
-import { Spacer } from '@nextui-org/spacer';
-import Input from './Input.tsx';
 
 export interface FormInput {
   username: string;
@@ -24,17 +24,17 @@ export default function MaterialDesignSignUp() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterInput>({
+  } = useForm<Auth>({
     resolver: zodResolver(RegisterSchema),
   });
 
   const { mutation } = useRegisterMutation(registerService);
 
-  const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
+  const onSubmit: SubmitHandler<Auth> = async (data) => {
     mutation.mutateAsync(data);
   };
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center bg-cyan-900'>
+    <div className='dark min-h-screen flex flex-col items-center justify-center bg-cyan-900'>
       <div className='bg-cyan-950 p-8 py-16 rounded-3xl shadow-lg w-full max-w-md '>
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-6 text-center'>
           Sign Up

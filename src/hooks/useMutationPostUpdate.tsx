@@ -1,19 +1,19 @@
 import { useMutation, QueryClient } from '@tanstack/react-query';
-
-interface UpdatePostData {
-  title: string;
-  content: string;
-}
+import { Post } from "../schemas/post.schema";
 
 const queryClient = new QueryClient();
 
 export const useMutationPostUpdate = (
-  fetchApi: (data: UpdatePostData, url: string, token: string | undefined) => Promise<any>,
+  fetchApi: (
+    data: Post,
+    url: string,
+    token: string | undefined,
+  ) => Promise<any>,
   url: string,
   token: string | undefined,
 ) => {
   const mutation = useMutation({
-    mutationFn: (data: UpdatePostData) => {
+    mutationFn: (data: Post) => {
       return fetchApi(data, url, token);
     },
     onSuccess: () => {

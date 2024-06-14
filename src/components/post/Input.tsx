@@ -1,8 +1,7 @@
 import { Input as NextInput } from '@nextui-org/input';
-import { InputProps } from '../types';
-type keys = "author_id" | "title" | "categories" | "content" ;
+import { InputProps } from '../../schemas/post.schema'
 
-const Input = (props: InputProps<keys>) => {
+const Input = (props: InputProps) => {
   const { errors, type = 'text', color, label, register, placeholder } = props;
 
   return (

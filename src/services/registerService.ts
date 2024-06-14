@@ -1,8 +1,8 @@
-import { RegisterInput } from '../schemas/register.schema';
+import { Auth } from '../schemas/auth.schema';
 
 const url = 'http://127.0.0.1:8000/api/users/register';
 
-export const registerService = async (data: RegisterInput) => {
+export const registerService = async (data: Auth) => {
   try {
     const response = await fetch(url, {
       method: 'POST',

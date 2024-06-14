@@ -5,7 +5,9 @@ interface PostData {
 }
 const queryClient = new QueryClient();
 
-export const useAcyncMutation = (fetchApi: (arg0: PostData) => Promise<unknown>) => {
+export const useAcyncMutation = (
+  fetchApi: (arg0: PostData) => Promise<unknown>,
+) => {
   const mutation = useMutation({
     mutationFn: (data: PostData) => {
       return fetchApi(data);

@@ -1,10 +1,7 @@
-interface UpdatePostData {
-  title: string;
-  content: string;
-}
+import { Post } from "../schemas/post.schema";
 
 export const postUpdateService = async (
-  data: UpdatePostData,
+  data: Post,
   url: string,
   token: string | undefined,
 ) => {

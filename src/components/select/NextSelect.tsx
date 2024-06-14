@@ -1,37 +1,36 @@
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import { Select as NextSelect, SelectItem } from '@nextui-org/select';
-import { CreatePostInferface } from '../../schemas/post.schema';
+import { Post } from '../../schemas/post.schema';
 
-interface Category {
-	name: string;
+
+interface Category { name: string  }
+
+  type Props = {
+  register: UseFormRegister<Post>;
+  errors: FieldErrors<Post | any>;
+  categories: Category[];
 }
 
-interface Props  {
-	register: UseFormRegister<CreatePostInferface>;
-	errors: FieldErrors<CreatePostInferface>;
-	categories: Category[];
-};
-
 export default function Select({ register, errors, categories }: Props) {
-	return (
-		<NextSelect
-			{...register('categories')}
-			variant='underlined'
-			className='max-w-xs'
-			selectionMode='multiple'
-			placeholder='Select one or several Categories'
-			isInvalid={errors?.categories?.message ? true : false}
-			errorMessage={`${errors?.categories?.message}`}
-		>
-			{categories ? (
-				categories.map((category) => (
-					<SelectItem key={category?.name}>{category?.name}</SelectItem>
-				))
-			) : (
-				<SelectItem key=''>no-data</SelectItem>
-			)}
-		</NextSelect>
-	);
+  return (
+    <NextSelect
+      {...register('categories')}
+      variant='underlined'
+      className='max-w-xs'
+      selectionMode='multiple'
+      placeholder='Select one or several Categories'
+      isInvalid={errors?.categories?.message ? true : false}
+      errorMessage={`${errors?.categories?.message}`}
+    >
+      {categories ? (
+        categories.map((category) => (
+          <SelectItem key={category.name}>{category?.name}</SelectItem>
+        ))
+      ) : (
+        <SelectItem key=''>no-data</SelectItem>
+      )}
+    </NextSelect>
+  );
 }
 
 //   npx nextui-cli@latest add input
