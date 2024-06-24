@@ -4,18 +4,19 @@ import { User } from '../store/actions.ts';
 
 const queryClient = new QueryClient();
 
-export const useLoginMutation = (
-  fetchApi: (arg0: { username: string; password: string }) => Promise<User>,
-) => {
+export const useAuthMutation = (fetchApi: {
+  (data: Auth): Promise<User>;
+  (arg0: Auth): Promise<unknown>;
+}) => {
   const mutation = useMutation({
     mutationFn: (data: Auth) => {
       return fetchApi(data);
     },
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
+      queryClient.invalidateQueries({ queryKey: ['auth'] });
     },
-    onSettled: () => queryClient.invalidateQueries({ queryKey: ['posts'] }),
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ['auth'] }),
     mutationKey: ['posts'],
   });
   return { mutation };

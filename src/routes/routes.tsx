@@ -9,6 +9,7 @@ const PostLayout = lazy(() => import('../components/post/PostLayout.tsx'));
 const Dashboard = lazy(() => import('./posts/dashboard.tsx'));
 const Post = lazy(() => import('../components/post/Post.tsx'));
 const Blog = lazy(() => import('./blog.tsx'));
+const About = lazy(() => import('./about.tsx'));
 
 export const list = [
   {
@@ -16,6 +17,12 @@ export const list = [
     element: <Root />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/about',
+    element: <About />,
+    errorElement: <ErrorPage />,
+  },
+
   {
     path: '/blog-dashboard',
     element: <Blog />,

@@ -17,4 +17,5 @@ export interface InputGeneric<T extends FieldValues> {
 	label: Path<T>;
 	errors: FieldErrors<T | any>;
 	register: UseFormRegister<T>;
+	defaultValue?: string | undefined;
 }

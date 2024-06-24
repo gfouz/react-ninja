@@ -1,5 +1,6 @@
 import Circles from '../svg/Circle.tsx';
 import Modal from '../modal/Modal.tsx';
+import { bio, title, info } from './content';
 
 const About = () => {
   return (
@@ -44,20 +45,13 @@ const About = () => {
                 A short biography about me.
               </span>
               <h2 className='mb-5 text-3xl font-bold text-dark sm:text-[40px]/[48px] dark:text-white'>
-                Who am I and what things I do.
+                {title}
               </h2>
               <p className='mb-5 text-base text-body-color dark:text-dark-6'>
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less.
-              </p>
-              <p className='mb-8 text-base text-body-color dark:text-dark-6'>
-                A domain name is one of the first steps to establishing your
-                brand. Secure a consistent brand image with a domain name that
-                matches your business.
+                {bio}
               </p>
               {/*<NavButton name='Dev Community' link='https://dev.to/gfouz' />*/}
-              <Modal />
+              <Modal title={title} info={info} />
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ import { usePostStore } from '../../store/store.ts';
 import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
 import Input from './Input.tsx';
+import Textarea from '../textarea/TextArea.tsx';
 
 export default function PostUpdate() {
   const {
@@ -27,54 +28,38 @@ export default function PostUpdate() {
     user?.token,
   );
 
-  const onSubmit: SubmitHandler<Post> = async (
-    data: Post,
-  ) => {
+  const onSubmit: SubmitHandler<Post> = async (data: Post) => {
     await mutation.mutateAsync(data);
   };
 
   return (
-    <div className='container relative mx-auto my-12 max-w-[1000px] p-12 rounded bg-emerald-950'>
-      <div className='absolute top-0 right-0'>
-        <CancelButton />
-      </div>
-      <h2 className='text-2xl text-emerald-300 font-bold mb-4'>Update Post</h2>
+    <div className='dark container relative mx-auto my-12 max-w-[1000px] p-12 rounded-2xl bg-purple-900'>
+      <h2 className='text-3xl text-white font-extrabold tracking-tight my-12'>
+        Update Post
+      </h2>
       <form className='' onSubmit={handleSubmit(onSubmit)}>
         <div className='mb-4'>
-          <label
-            htmlFor='title'
-            className='block text-emerald-200 font-semibold mb-2'
-          >
-            Title
-          </label>
           <Input
-            color='primary'
+            color='secondary'
             label='title'
             errors={errors}
             register={register}
+            defaultValue={post?.title}
             placeholder='Choose a title'
           />
           {errors.title && (
             <span className='text-red-500'>Title is required</span>
           )}
         </div>
-        <div className='mb-4'>
-          <label
-            htmlFor='body'
-            className='block text-emerald-200 font-semibold mb-2'
-          >
-            Markdown content
-          </label>
-          <textarea
+        <div className='mb-4 !text-white'>
+          <Textarea
+            color='secondary'
+            errors={errors}
+            register={register}
             defaultValue={post?.content}
-            {...register('content', { required: true })}
-            className='w-full bg-emerald-950 text-emerald-200 border rounded py-2 px-3 min-h-[300px]'
-          ></textarea>
-          {errors.content && (
-            <span className='text-red-500'>Content is required</span>
-          )}
+          />
         </div>
-        <section className='sm:flex items-center md:py-12 my-12'>
+        <section className='w-[300px] flex  justify-evenly items-center'>
           <SubmitButton />
           <CancelButton />
         </section>

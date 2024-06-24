@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, Auth } from '../../schemas/auth.schema.ts';
 import { loginService } from '../../services/loginService.ts';
-import { useLoginMutation } from '../../hooks/useLoginMutation.tsx';
+import { useAuthMutation } from '../../hooks/useAuthMutation.tsx';
 import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SuccessButton from '../../components/buttons/SuccessButton.tsx';
 import { useUserStore } from '../../store/userstore.ts';
@@ -19,7 +19,7 @@ const EnterpriseLogin = () => {
     resolver: zodResolver(LoginSchema),
   });
   const dispatch = useUserStore((state) => state.dispatch);
-  const { mutation } = useLoginMutation(loginService);
+  const { mutation } = useAuthMutation(loginService);
   const onSubmit: SubmitHandler<Auth> = async (data) => {
     const res = await mutation.mutateAsync(data);
     dispatch({ type: 'SET_USER', payload: res });

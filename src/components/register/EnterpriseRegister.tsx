@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterSchema, Auth } from '../../schemas/auth.schema.ts';
 import { registerService } from '../../services/registerService';
-import { useRegisterMutation } from '../../hooks/useRegisterMutation';
+import { useAuthMutation } from '../../hooks/useAuthMutation.tsx';
 
 import SubmitButton from '../../components/buttons/SubmitButton.tsx';
 import LoginButton from '../../components/buttons/LoginButton.tsx';
@@ -28,10 +28,11 @@ export default function MaterialDesignSignUp() {
     resolver: zodResolver(RegisterSchema),
   });
 
-  const { mutation } = useRegisterMutation(registerService);
+  const { mutation } = useAuthMutation(registerService);
 
   const onSubmit: SubmitHandler<Auth> = async (data) => {
     mutation.mutateAsync(data);
+    console.log(data);
   };
   return (
     <div className='dark min-h-screen flex flex-col items-center justify-center bg-cyan-900'>

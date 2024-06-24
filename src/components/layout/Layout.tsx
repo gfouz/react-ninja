@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../../components/navbar/Navbar.tsx';
+import Navbar from '../../components/navbar/NextNavbar.tsx';
 import Footer from '../../components/footer/Footer.tsx';
 
 interface LayoutProps {
@@ -8,17 +8,17 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const links = ['/', '/login', '/blog-dashboard', '/register', '/create/post'];
+const links = ['/', '/login', '/register', '/blog-dashboard', '/create/post'];
 
 const Layout = ({ color, children, background }: LayoutProps) => {
   return (
-    <div className={`${color} h-full min-h-screen w-full ${background}`}>
+    <section className={`${color} dark h-full w-full ${background}`}>
       <header>
-        <Navbar links={links} color={color} background={background} />
+        <Navbar links={links} />
       </header>
-      <main className='container mx-auto p-4'>{children}</main>
+      <article className='container mx-auto'>{children}</article>
       <Footer color={color} background={background} />
-    </div>
+    </section>
   );
 };
 

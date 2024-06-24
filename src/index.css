@@ -70,6 +70,7 @@ p {
 a {
   /*color: #007bff; /* Example link color */
   text-decoration: none;
+  background-color: transparent;
 }
 .embedded-link a {
   color: blue;

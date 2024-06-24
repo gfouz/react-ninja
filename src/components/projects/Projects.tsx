@@ -10,7 +10,7 @@ interface ProjectList {
 
 export default function Projects({ projects }: ProjectList) {
   return (
-    <div className='grid-auto-fit gap-5 p-8 '>
+    <div className='grid-auto-fit gap-8 '>
       {/* Your projects here */}
 
       {projects.map((project) => (

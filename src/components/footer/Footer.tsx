@@ -9,7 +9,7 @@ export default function Footer(props: IFooter) {
   const { color, background } = props;
   return (
     <footer
-      className={`${color} flex justify-center px-4 w-[100%] ${background}`}
+      className={`${color} dark:bg-gray-900 dark:text-gray-100 flex justify-center px-4 w-[100%] ${background}`}
     >
       <div className='container px-4 py-8'>
         <div className='flex justify-center py-6'>
@@ -17,9 +17,12 @@ export default function Footer(props: IFooter) {
         </div>
         <hr className='h-px mt-6 bg-gray-700 border-none' />
 
-        <div className='text-[#FEF08A] flex flex-col items-center justify-between mt-6 md:flex-row'>
+        <div className='flex flex-col items-center justify-between mt-6 md:flex-row'>
           <div>
-            <a href='#' className={`${color} px-4 text-sm`}>
+            <a
+              href='https://github.com/gfouz'
+              className={`${color} capitalize px-4 text-sm`}
+            >
               fouz.dev
             </a>
           </div>
