@@ -2,21 +2,31 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@nextui-org/button';
 
-const variants = {
-  links: {
-    display: 'block',
-    opacity: [0, 0.25, 0.5, 0.75, 1],
+const variant2 = {
+  open: {
+    display: 'flex',
+    height: 160,
+    opacity: 1,
     transition: {
-      duration: 5,
+      duration: 2,
+      delay: 0.3,
     },
   },
+  closed: {
+    height: 0,
+    display: 'none',
+    opacity: 0,
+    transition: { duration: 0.3 },
+  },
+};
 
+const variants = {
   open: {
     display: 'block',
     height: 160,
     opacity: [0, 0.25, 0.5, 0.75, 1],
     transition: {
-      duration: 0.5,
+      duration: 0.8,
     },
   },
   closed: {
@@ -60,33 +70,39 @@ const Dropdown = () => {
         </div>
 
         <motion.nav
-          className='bg-rose-500 w-full absolute top-[60px] left-0 rounded-b-md'
+          className='bg-rose-500 w-full absolute top-[60px] left-0 rounded-b-xl'
           animate={isOpen ? 'open' : 'closed'}
           variants={variants}
         >
           <div
             className={` ${isOpen ? 'open' : 'closed'}  capitalize h-[160px] flex flex-col justify-evenly text-center text-white text-sm`}
           >
-            <a
-              className={` ${isOpen ? 'links' : 'closed'}  hover:bg-rose-400`}
+            <motion.a
+              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-y border-rose-800  hover:bg-rose-400`}
               href='https://github.com/gfouz'
+              animate={isOpen ? 'open' : 'closed'}
+              variants={variant2}
             >
               github
-            </a>
+            </motion.a>
 
-            <a
-              className={` ${isOpen ? 'links' : 'closed'}  hover:bg-rose-400`}
+            <motion.a
+              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-b border-rose-800 hover:bg-rose-400`}
               href='https://www.linkedin.com/in/giovani-fouz-373210258/'
+              animate={isOpen ? 'open' : 'closed'}
+              variants={variant2}
             >
               linkedIn
-            </a>
+            </motion.a>
 
-            <a
-              className={` ${isOpen ? 'links' : 'closed'}  hover:bg-rose-400`}
+            <motion.a
+              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center   hover:bg-rose-400`}
               href='https://dev.to/gfouz'
+              animate={isOpen ? 'open' : 'closed'}
+              variants={variant2}
             >
               Community
-            </a>
+            </motion.a>
           </div>
         </motion.nav>
       </div>
