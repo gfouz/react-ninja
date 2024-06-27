@@ -19,7 +19,7 @@ export default function Textarea({
       placeholder='Enter your Content'
       classNames={{
         input: 'dark:!text-white max-w-2xl',
-        label: 'dark:!text-white text-xl font-semibold',
+        label: 'dark:!text-white text-sm',
       }}
       defaultValue={defaultValue}
       isInvalid={errors?.content?.message ? true : false}

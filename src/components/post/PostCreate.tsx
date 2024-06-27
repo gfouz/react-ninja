@@ -10,7 +10,7 @@ import ResponsiveTable from '../../components/table/ResponsiveTable.tsx';
 import Select from '../../components/select/NextSelect.tsx';
 import Textarea from '../../components/textarea/TextArea.tsx';
 
-import { Post, PostCreateSchema} from '../../schemas/post.schema';
+import { Post, PostCreateSchema } from '../../schemas/post.schema';
 import Input from './Input.tsx';
 
 export default function CreatePost() {
@@ -42,19 +42,13 @@ export default function CreatePost() {
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-10 text-center'>
           Create Post
         </h2>
-        <form className='max-w-md mx-auto' onSubmit={handleSubmit(onSubmit)}>
+        <form className='max-w-md mx-auto ' onSubmit={handleSubmit(onSubmit)}>
           <input
             defaultValue={user?.user_id}
             type='hidden'
             {...register('author_id')}
           />
           <div className='mb-4'>
-            <label
-              htmlFor='categories'
-              className='block mb-2 text-sm font-semibold text-slate-500 '
-            >
-              Choose a title
-            </label>
             <Input
               color='primary'
               label='title'
@@ -65,13 +59,6 @@ export default function CreatePost() {
           </div>
 
           <div className='py-4'>
-            <label
-              htmlFor='categories'
-              className='block mb-2 text-sm font-semibold text-slate-500 '
-            >
-              Select Category
-            </label>
-
             <Select
               register={register}
               errors={errors}
@@ -80,9 +67,6 @@ export default function CreatePost() {
           </div>
 
           <div className='mb-4'>
-            <label className='block text-sm text-slate-500 font-semibold mb-2'>
-              Markdown content
-            </label>
             <Textarea register={register} errors={errors} />
           </div>
           <section className='sm:flex items-center md:py-12 my-12'>

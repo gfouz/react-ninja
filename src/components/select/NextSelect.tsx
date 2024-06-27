@@ -2,18 +2,20 @@ import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import { Select as NextSelect, SelectItem } from '@nextui-org/select';
 import { Post } from '../../schemas/post.schema';
 
+interface Category {
+  name: string;
+}
 
-interface Category { name: string  }
-
-  type Props = {
+type Props = {
   register: UseFormRegister<Post>;
   errors: FieldErrors<Post | any>;
   categories: Category[];
-}
+};
 
 export default function Select({ register, errors, categories }: Props) {
   return (
     <NextSelect
+      label='Select one or more categories'
       {...register('categories')}
       variant='underlined'
       className='max-w-xs'
@@ -21,6 +23,9 @@ export default function Select({ register, errors, categories }: Props) {
       placeholder='Select one or several Categories'
       isInvalid={errors?.categories?.message ? true : false}
       errorMessage={`${errors?.categories?.message}`}
+      classNames={{
+        label: 'dark:!text-white text-sm',
+      }}
     >
       {categories ? (
         categories.map((category) => (

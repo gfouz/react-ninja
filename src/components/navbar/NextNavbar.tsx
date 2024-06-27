@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import MotionDropdown from '../dropdown/MotionDropdown.tsx';
+import Dropdown from '../dropdown/Dropdown.tsx';
 
 import {
   Navbar as NextUINavbar,
@@ -22,7 +24,7 @@ export default function Navbar({ links = defaultLinks }: { links: string[] }) {
 
   return (
     <NextUINavbar
-      className='bg-slate-800'
+      className='bg-slate-800 opacity-90'
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
@@ -39,23 +41,13 @@ export default function Navbar({ links = defaultLinks }: { links: string[] }) {
         justify='center'
       >
         <NavbarBrand>
-          <img
-            className='w-[25px] h-auto mr-2'
-            src='/images/www.png'
-            alt='my logo'
-          />
-          <p className='font-extrabold text-inherit'>Fouz</p>
+          <Dropdown />
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className='hidden sm:flex gap-4 ' justify='center'>
-        <NavbarBrand className='bg-rose-500 h-full px-4'>
-          <img
-            className='w-[25px] h-auto mr-2'
-            src='/images/www.png'
-            alt='my logo'
-          />
-          <p className='font-bold text-inherit text-white'>Fouz</p>
+        <NavbarBrand className='bg-rose-500 h-full relative'>
+          <MotionDropdown />
         </NavbarBrand>
 
         {links?.map((link) => (

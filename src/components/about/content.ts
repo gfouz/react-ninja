@@ -2,8 +2,9 @@ export const title = `About my work and experience`;
 
 export const info = `Welcome to my portfolio, where I showcase projects built with a
 powerful combination of cutting-edge technologies such as React,
-Django Ninja, tanstack-query, Typescript, react-hook-form, Zod, Zustand, and
-Tailwind CSS. This combination allows for quick handling of data between front-end and back-end.
+tanstack-query, Typescript, react-hook-form, Zod, Zustand, and
+Tailwind CSS and Django Ninja (Python) for backend logic. 
+This combination allows for quick handling of data between front-end and back-end.
 Tailwind CSS offers a highly
 customizable and responsive design system, allowing for quick and easy
 styling of components and enhancing the visual appeal of the projects.

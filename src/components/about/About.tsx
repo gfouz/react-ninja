@@ -4,7 +4,7 @@ import { bio, title, info } from './content';
 
 const About = () => {
   return (
-    <section className='overflow-hidden bg-white px-8  pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark'>
+    <section className='overflow-hidden  px-8  pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark'>
       <div className='container mx-auto'>
         <div className='-mx-4 flex flex-wrap items-center justify-between'>
           <div className='w-full px-4 lg:w-6/12'>
@@ -44,7 +44,7 @@ const About = () => {
               <span className='mb-4 block text-lg font-semibold text-primary'>
                 A short biography about me.
               </span>
-              <h2 className='mb-5 text-3xl font-bold text-dark sm:text-[40px]/[48px] dark:text-white'>
+              <h2 className='mb-5 text-3xl font-bold text-dark sm:text-[40px]/[48px] '>
                 {title}
               </h2>
               <p className='mb-5 text-base text-body-color dark:text-dark-6'>

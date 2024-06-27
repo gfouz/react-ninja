@@ -13,15 +13,20 @@ const links = ['/', '/about', '/register', '/login', '/blog-dashboard'];
 const Root = () => {
   return (
     <Layout>
-      <main className='mx-auto'>
+      <main className='mx-auto bg-slate-300'>
         {/* About Section  w-[100%] aspect-[1.85] */}
 
-        <section className='relative grid place-items-center  bg-[#030303]'>
-          <img src='images/space.jpg' alt='space' />
-          <section className='absolute top-0 grid place-items-center left-0 w-full h-full'>
-            <div className='flex flex-col items-center z-10'>
+        <section className='w-full relative shadow shadow-2xl'>
+          <img
+            className='max-w-[100%] h-auto '
+            src='images/space.jpg'
+            alt='woman on laptop'
+          />
+          <section className='absolute top-0 flex px-8 justify-end items-center left-0 w-full h-full'>
+            <div className='flex flex-col items-center'>
+              <h1 className='sr-only'>Giovani fouz portfolio</h1>
               <h2 className='text-[6vw] text-white'>
-                Web<span className='text-red-500'>Developer</span>
+                Web<span className='text-rose-500'>Developer</span>
               </h2>
               <div className='input-errors my-8'>
                 <p className='text-white font-extrabold tracking-tight text-[2vw] relative bottom-10'>
@@ -34,12 +39,14 @@ const Root = () => {
 
         {/* Projects Section */}
         <section className='px-8'>
-          <div className='p-12'>
-            <h2 className='text-center text-3xl text-slate-600 font-extrabold tracking-tight'>
-              Projects
-            </h2>
+          <div className='py-20'>
+            <a href='https://github.com/gfouz'>
+              <h2 className='text-center text-3xl font-bold text-dark sm:text-[40px]/[48px]'>
+                Github Projects
+              </h2>
+            </a>
           </div>
-          <article className='grid place-items-center'>
+          <article className='grid place-items-center '>
             <MotionOnScroll className='relative' variants={opacity}>
               <Projects projects={projects} />
             </MotionOnScroll>

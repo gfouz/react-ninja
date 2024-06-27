@@ -8,15 +8,22 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const links = ['/', '/login', '/register', '/blog-dashboard', '/create/post'];
+const links = [
+  '/',
+  '/about',
+  '/login',
+  '/register',
+  '/blog-dashboard',
+  '/create/post',
+];
 
 const Layout = ({ color, children, background }: LayoutProps) => {
   return (
     <section className={`${color} dark h-full w-full ${background}`}>
-      <header>
+      <header className='sticky top-0 left-0 z-30'>
         <Navbar links={links} />
       </header>
-      <article className='container mx-auto'>{children}</article>
+      <article className='mx-auto'>{children}</article>
       <Footer color={color} background={background} />
     </section>
   );

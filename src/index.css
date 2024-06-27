@@ -112,7 +112,7 @@ button:focus-visible {
 }
 
 .loader {
-  width: 20px;
+  width: 50px;
   aspect-ratio: 4;
   background: radial-gradient(circle closest-side, #000 70%, #0000) 0 /
     calc(100% / 3) 100% space;
