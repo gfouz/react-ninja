@@ -14,7 +14,7 @@ const variants = {
   open: {
     display: 'block',
     height: 160,
-    opacity: 1,
+    opacity: [0, 0.25, 0.5, 0.75, 1],
     transition: {
       duration: 0.5,
     },
