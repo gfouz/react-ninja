@@ -5,9 +5,11 @@ import { opacity } from '../components/framer-motion/MotionOnScroll.tsx';
 import { projects } from './content.ts';
 import About from '../components/about/About.tsx';
 import Projects from '../components/projects/Projects.tsx';
-
 import Footer from '../components/footer/Footer.tsx';
+import Dropdown from '../components'
 
+      
+//custom links
 const links = ['/', '/about', '/register', '/login', '/blog-dashboard'];
 
 const Root = () => {
@@ -15,7 +17,6 @@ const Root = () => {
     <Layout>
       <main className='mx-auto bg-slate-300'>
         {/* About Section  w-[100%] aspect-[1.85] */}
-
         <section className='w-full relative shadow shadow-2xl'>
           <img
             className='max-w-[100%] h-auto '

@@ -1,41 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@nextui-org/button';
+import { variants, variants2 } from './constants.ts'
 
-const variant2 = {
-  open: {
-    display: 'flex',
-    height: 160,
-    opacity: 1,
-    transition: {
-      duration: 2,
-      delay: 0.3,
-    },
-  },
-  closed: {
-    height: 0,
-    display: 'none',
-    opacity: 0,
-    transition: { duration: 0.3 },
-  },
-};
-
-const variants = {
-  open: {
-    display: 'block',
-    height: 160,
-    opacity: [0, 0.25, 0.5, 0.75, 1],
-    transition: {
-      duration: 0.8,
-    },
-  },
-  closed: {
-    height: 0,
-    display: 'none',
-    opacity: 0,
-    transition: { duration: 0.3 },
-  },
-};
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -81,7 +48,7 @@ const Dropdown = () => {
               className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-y border-rose-800  hover:bg-rose-400`}
               href='https://github.com/gfouz'
               animate={isOpen ? 'open' : 'closed'}
-              variants={variant2}
+              variants={variants2}
             >
               github
             </motion.a>
@@ -90,7 +57,7 @@ const Dropdown = () => {
               className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-b border-rose-800 hover:bg-rose-400`}
               href='https://www.linkedin.com/in/giovani-fouz-373210258/'
               animate={isOpen ? 'open' : 'closed'}
-              variants={variant2}
+              variants={variants2}
             >
               linkedIn
             </motion.a>
@@ -99,7 +66,7 @@ const Dropdown = () => {
               className={` ${isOpen ? 'open' : 'closed'} justify-center items-center   hover:bg-rose-400`}
               href='https://dev.to/gfouz'
               animate={isOpen ? 'open' : 'closed'}
-              variants={variant2}
+              variants={variants2}
             >
               Community
             </motion.a>
