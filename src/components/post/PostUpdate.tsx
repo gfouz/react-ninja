@@ -53,6 +53,7 @@ export default function PostUpdate() {
         </div>
         <div className='mb-4 !text-white'>
           <Textarea
+            label='content'
             color='secondary'
             errors={errors}
             register={register}

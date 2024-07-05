@@ -1,9 +1,9 @@
 import { Textarea as NextUITextarea } from '@nextui-org/input';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { Post, InputProps } from '../../schemas/post.schema';
+import { InputProps } from '../../schemas/post.schema';
 
 export default function Textarea({
-  color,
+  color='primary',
+  label='content',
   register,
   errors,
   defaultValue,
@@ -12,14 +12,14 @@ export default function Textarea({
     <NextUITextarea
       color={color}
       maxRows={10}
-      label='Markdown Content'
+      label={label}
       variant='underlined'
       labelPlacement='outside'
       {...register('content')}
       placeholder='Enter your Content'
       classNames={{
-        input: 'dark:!text-white max-w-2xl',
-        label: 'dark:!text-white text-sm',
+        input: '!text-violet-100 text-md max-w-2xl',
+        label: '!text-violet-200 text-md capitalize font-black',
       }}
       defaultValue={defaultValue}
       isInvalid={errors?.content?.message ? true : false}
@@ -27,3 +27,4 @@ export default function Textarea({
     />
   );
 }
+

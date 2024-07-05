@@ -12,8 +12,6 @@ import {
   NavbarContent,
   NavbarItem,
 } from '@nextui-org/navbar';
-import { Button } from '@nextui-org/button';
-import CartPlus from '../icons/CartPlus.tsx';
 
 let regex = /\//g;
 const defaultLinks = ['/', '/about', '/blog', '/contact'];
@@ -51,21 +49,32 @@ export default function Navbar({ links = defaultLinks }: { links: string[] }) {
         </NavbarBrand>
 
         {links?.map((link) => (
-          <NavbarItem
-            key={link}
-            className={pathname !== link ? 'block capitalize' : 'hidden'}
-          >
-            <Link className='dark:text-white text-white' to={link}>
-              <span>
-                {pathname !== link ? link.replace(regex, ' ') : null}{' '}
-              </span>
-              <span>{link === '/' && pathname !== link ? 'home' : null}</span>
+          <NavbarItem key={link}>
+            <Link
+              className={
+                pathname !== link
+                  ? 'capitalize text-white'
+                  : 'capitalize font-black text-yellow-300'
+              }
+              to={link}
+            >
+              <span>{link ? link.replace(regex, ' ') : null} </span>
+              <span>{link === '/' ? 'home' : null}</span>
             </Link>
           </NavbarItem>
         ))}
       </NavbarContent>
 
       <NavbarMenu className='pt-16'>
+        <div className='flex pb-4 border-b border-gray-700'>
+          <img
+            className='w-[25px] h-auto'
+            src='/images/www.png'
+            alt='my logo'
+          />
+          <span className='ml-2 font-black'>Fouz Portfolio</span>
+        </div>
+
         {links.map((link, index) => (
           <NavbarMenuItem
             key={index}

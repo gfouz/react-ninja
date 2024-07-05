@@ -37,12 +37,12 @@ export default function CreatePost() {
     await mutation.mutateAsync(data);
   };
   return (
-    <section className='py-12 flex flex-col items-center md:flex-row justify-evenly md:items-start'>
-      <div className='mb-4 bg-slate-100 p-8 rounded-lg shadow-lg w-full max-w-md'>
-        <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-10 text-center'>
+    <section className='py-16 bg-gray-300 flex flex-col items-center md:flex-row justify-evenly md:items-start'>
+      <div className='mb-4 bg-purple-950 p-8 rounded-lg shadow-lg w-full max-w-md'>
+        <h2 className='text-yellow-500 text-3xl font-extrabold tracking-tight mb-10 text-center'>
           Create Post
         </h2>
-        <form className='max-w-md mx-auto ' onSubmit={handleSubmit(onSubmit)}>
+        <form className='max-w-md mx-auto text-slate-800' onSubmit={handleSubmit(onSubmit)}>
           <input
             defaultValue={user?.user_id}
             type='hidden'
@@ -58,7 +58,7 @@ export default function CreatePost() {
             />
           </div>
 
-          <div className='py-4'>
+          <div className='py-4 text-slate-900'>
             <Select
               register={register}
               errors={errors}
@@ -66,8 +66,8 @@ export default function CreatePost() {
             />
           </div>
 
-          <div className='mb-4'>
-            <Textarea register={register} errors={errors} />
+          <div className='my-4'>
+            <Textarea register={register} errors={errors}  label='content' />
           </div>
           <section className='sm:flex items-center md:py-12 my-12'>
             {user?.user_id === undefined ? <SignInButton /> : <SubmitButton />}

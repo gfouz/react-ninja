@@ -26,4 +26,4 @@ export type RegisterType = z.infer<typeof RegisterSchema>;
 export type LoginType = z.infer<typeof LoginSchema>;
 export type Auth = LoginType | RegisterType;
 
-export type InputProps = InputGeneric<Auth>
+export type InputProps = InputGeneric<Auth>;

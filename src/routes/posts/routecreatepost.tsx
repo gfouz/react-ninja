@@ -1,16 +1,11 @@
 import PostCreate from '../../components/post/PostCreate.tsx';
-import Navbar from '../../components/navbar/Navbar.tsx';
-import BasicFooter from '../../components/footer/BasicFooter.tsx';
-
-const links = ['/', '/register', '/login', '/blog-dashboard'];
+import Layout from '../../components/layout/Layout.tsx';
 
 const RouteCreatePost = () => {
   return (
-    <div className='w-full min-h-screen bg-gray-200'>
-      <Navbar links={links} color='text-gray-700' background='bg-slate-200' />
+    <Layout>
       <PostCreate />
-      <BasicFooter color='text-gray-700' background='bg-slate-200' />
-    </div>
+    </Layout>
   );
 };
 export default RouteCreatePost;

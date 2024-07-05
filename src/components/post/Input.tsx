@@ -12,19 +12,20 @@ const Input = (props: InputProps) => {
     defaultValue,
   } = props;
 
-  const tag = label.toLowerCase().charAt(0).toUpperCase() + label.slice(1);
-
   return (
     <NextUIInput
       type={type}
-      label={tag}
+      label={label}
       color={color}
       variant='underlined'
       labelPlacement='outside'
       placeholder={placeholder}
       {...register(label)}
       defaultValue={defaultValue}
-      classNames={{ label: 'dark:!text-white', input: 'dark:!text-white' }}
+      classNames={{
+        label: '!text-vioñet-100 text-md capitalize font-black',
+        input: 'text-violet-100 text-md',
+      }}
       isInvalid={errors[label]?.message ? true : false}
       errorMessage={`${errors[label]?.message}`}
     />

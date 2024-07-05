@@ -75,10 +75,7 @@ export const updatePostService = async (
   }
 };
 
-export const createPostService = async (
-  data: Post,
-  token: string,
-) => {
+export const createPostService = async (data: Post, token: string) => {
   const url = 'http://127.0.0.1:8000/api/posts/create/newpost';
   try {
     const response = await fetch(url, {

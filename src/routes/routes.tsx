@@ -18,7 +18,7 @@ export const list = [
     errorElement: <ErrorPage />,
   },
   {
-    path: '/about',
+    path: '/me',
     element: <About />,
     errorElement: <ErrorPage />,
   },

@@ -15,6 +15,7 @@ type Props = {
 export default function Select({ register, errors, categories }: Props) {
   return (
     <NextSelect
+      color='primary'
       label='Select one or more categories'
       {...register('categories')}
       variant='underlined'
@@ -24,7 +25,8 @@ export default function Select({ register, errors, categories }: Props) {
       isInvalid={errors?.categories?.message ? true : false}
       errorMessage={`${errors?.categories?.message}`}
       classNames={{
-        label: 'dark:!text-white text-sm',
+        label: '!text-violet-100 text-md capitalize font-black',
+        value: '!text-violet-100 text-md'
       }}
     >
       {categories ? (

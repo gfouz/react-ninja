@@ -29,11 +29,10 @@ export default function Dropdown() {
         </DropdownItem>
         <DropdownItem
           key='edit'
+          color='danger'
+          className='text-danger'
           href='https://www.linkedin.com/in/giovani-fouz-373210258/'
         >
-          LinkedIn
-        </DropdownItem>
-        <DropdownItem key='delete' className='text-danger' color='danger'>
           LinkedIn
         </DropdownItem>
       </DropdownMenu>

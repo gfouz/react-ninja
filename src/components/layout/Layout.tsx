@@ -3,28 +3,27 @@ import Navbar from '../../components/navbar/NextNavbar.tsx';
 import Footer from '../../components/footer/Footer.tsx';
 
 interface LayoutProps {
-  color?: string;
-  background?: string;
+  styles?: string;
   children: React.ReactNode;
 }
 
 const links = [
   '/',
-  '/about',
+  '/me',
   '/login',
   '/register',
-  '/blog-dashboard',
   '/create/post',
+  '/blog-dashboard',
 ];
 
-const Layout = ({ color, children, background }: LayoutProps) => {
+const Layout = ({ styles, children }: LayoutProps) => {
   return (
-    <section className={`${color} dark h-full w-full ${background}`}>
+    <section className={`dark h-full w-full ${styles}`}>
       <header className='sticky top-0 left-0 z-30'>
         <Navbar links={links} />
       </header>
       <article className='mx-auto'>{children}</article>
-      <Footer color={color} background={background} />
+      <Footer styles={styles} />
     </section>
   );
 };

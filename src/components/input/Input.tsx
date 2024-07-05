@@ -3,12 +3,12 @@ import { InputProps } from '../../schemas/auth.schema.ts';
 
 const Input = (props: InputProps) => {
   const { errors, type = 'text', color, label, register, placeholder } = props;
-  const tag = label.toLowerCase().charAt(0).toUpperCase() + label.slice(1);
+ 
 
   return (
     <NextUIInput
       type={type}
-      label={tag}
+      label={label}
       color={color}
       variant='underlined'
       labelPlacement='outside'

@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@nextui-org/button';
-import { variants, variants2 } from './constants.ts'
-
+import { variants, variants2 } from './constants.ts';
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -16,7 +15,7 @@ const Dropdown = () => {
   };
 
   return (
-    <section className='relative  w-[130px] bg-rose-500'>
+    <section className='relative  w-[130px] bg-rose-500 pointer'>
       <div
         className='flex flex-col items-center '
         onMouseEnter={handleMouseEnter}

@@ -17,5 +17,4 @@ export type PostCreate = z.infer<typeof PostCreateSchema>;
 export type PostUpdate = z.infer<typeof PostUpdateSchema>;
 export type Post = PostCreate | PostUpdate;
 
-export type InputProps = InputGeneric<Post>
-  
+export type InputProps = InputGeneric<Post>;

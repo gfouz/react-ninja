@@ -1,3 +1,6 @@
+export const introduction =`The illiterates of the 21st century will not be those who can not read, 
+but those who can not learn.`
+
 export const projects = [
   {
     url: 'https://github.com/gfouz/ecommerce-starter.git',
@@ -52,3 +55,25 @@ a popular and versatile language. Django Ninja's built-in validation and
 authentication mechanisms ensure secure and reliable API endpoints. Integrated 
 documentation generation in Django Ninja simplifies API documentation and 
 client integration tasks.`;
+
+export const about_welcome = `I'm Giovani, a full-stack developer with a passion for building 
+dynamic and user-friendly web applications.
+With a strong foundation in HTML, CSS, and JavaScript, I've expanded my skills 
+to include advanced technologies like SCSS, TypeScript, React, Next.js, Django, 
+and Django Ninja. My expertise spans from front-end development to back-end development, 
+with a focus on creating scalable and maintainable solutions.`
+
+export const technical_skills = `<p>Front-end development: I have hands-on experience with HTML5, 
+CSS3 (including SCSS), JavaScript (including TypeScript), and React. I'm familiar with 
+Next.js and have used it to build several projects.</p>
+<p> Back-end development: I have a strong
+understanding of Django and Django Ninja, and have used them to build several back-end applications.</P>`
+
+export const devto_about = `<p>I've been fascinated by the rapid evolution of tech and its impact 
+on our daily lives. Through my writing, I aim to share my experiences, insights, and knowledge 
+with the developer community, exploring topics such as cybersecurity, web development.</p>
+
+<p><span>What drives me:</span> My curiosity about the latest technological advancements and my desire to contribute 
+to the growth of the tech community motivates me to continue writing and sharing my knowledge. 
+I believe that by sharing our collective experiences and insights, we can accelerate innovation 
+and push the boundaries of what's possible.</p>`

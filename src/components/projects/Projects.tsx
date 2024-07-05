@@ -1,4 +1,5 @@
 interface Project {
+  url: string;
   image: string;
   title: string;
   content: string;
@@ -13,8 +14,11 @@ export default function Projects({ projects }: ProjectList) {
     <div className='grid-auto-fit gap-8 '>
       {/* Your projects here */}
 
-      {projects.map((project) => (
-        <div className='text-gray-900 bg-slate-400 rounded-2xl overflow-hidden'>
+      {projects.map((project, index) => (
+        <div
+          key={index}
+          className='text-gray-900 bg-slate-400 rounded-2xl overflow-hidden'
+        >
           <div className='aspect-[600/400] text-center rounded-lg'>
             <div className='overflow-hidden'>
               <img

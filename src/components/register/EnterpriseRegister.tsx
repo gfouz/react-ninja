@@ -35,7 +35,7 @@ export default function MaterialDesignSignUp() {
     console.log(data);
   };
   return (
-    <div className='dark min-h-screen flex flex-col items-center justify-center bg-cyan-900'>
+    <div className='dark py-16 flex flex-col items-center justify-center bg-cyan-900'>
       <div className='bg-cyan-950 p-8 py-16 rounded-3xl shadow-lg w-full max-w-md '>
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-6 text-center'>
           Sign Up

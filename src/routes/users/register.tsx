@@ -3,10 +3,7 @@ import MaterialDesignSignUp from '../../components/register/EnterpriseRegister.t
 
 const RegisterPage = () => {
   return (
-    <Layout
-      color='text-cyan-200 placeholder-cyan-200 '
-      background='bg-cyan-900 border-yellow-100'
-    >
+    <Layout>
       <MaterialDesignSignUp />
     </Layout>
   );

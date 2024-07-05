@@ -1,5 +1,5 @@
 import { useMutation, QueryClient } from '@tanstack/react-query';
-import { Post } from "../schemas/post.schema";
+import { Post } from '../schemas/post.schema';
 
 const queryClient = new QueryClient();
 

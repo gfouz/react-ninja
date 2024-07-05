@@ -10,11 +10,10 @@ import EmailsInput from './EmailsInput.tsx';
 import Errors from '../../components/errors/Errors.tsx';
 
 interface CommentsFormProps {
-  color?: string;
-  background?: string;
+  styles?: string;
 }
 
-const CommentsForm = ({ color, background }: CommentsFormProps) => {
+const CommentsForm = ({ styles }: CommentsFormProps) => {
   const {
     register,
     handleSubmit,
@@ -30,7 +29,7 @@ const CommentsForm = ({ color, background }: CommentsFormProps) => {
     await mutation.mutateAsync(data);
   };
   return (
-    <section className={`${color} rounded-lg rounded-t-lg ${background}`}>
+    <section className={`rounded-lg rounded-t-lg ${styles}`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='p-8 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
           <div className='mx-auto max-w-screen-md  sm:text-center'>
@@ -41,7 +40,7 @@ const CommentsForm = ({ color, background }: CommentsFormProps) => {
               <textarea
                 {...register('message')}
                 rows={6}
-                className={` ${color} dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white  border border-gray-600 rounded-lg p-2 w-full text-sm text-gray-100  focus:ring-0 placeholder-gray-100 ${background}`}
+                className={`dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white  border border-gray-600 rounded-lg p-2 w-full text-sm text-gray-100  focus:ring-0 placeholder-gray-100 ${styles}`}
                 placeholder='Write a comment...'
               ></textarea>
             </div>
@@ -51,7 +50,7 @@ const CommentsForm = ({ color, background }: CommentsFormProps) => {
               </div>
             ) : null}
             <h2
-              className={`${color}  mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl ${background}`}
+              className={`mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl ${styles}`}
             >
               Send a comment
             </h2>
