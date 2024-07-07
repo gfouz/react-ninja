@@ -25,7 +25,7 @@ export const projects = [
   },
   {
     url: 'https://github.com/gfouz/ninja-server.git',
-    image: 'blog.jpg',
+    image: 'backend.jpg',
     title: 'ninja server side',
     content: `<a href="https://github.com/gfouz/ninja-server.git">My Reasons to Use Django Ninja: </a>
     Django Models Schemas: Schemas from Django models to define your validation rules and responses.
