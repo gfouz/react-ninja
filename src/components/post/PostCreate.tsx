@@ -10,7 +10,7 @@ import ResponsiveTable from '../../components/table/ResponsiveTable.tsx';
 import Select from '../../components/select/NextSelect.tsx';
 import Textarea from '../../components/textarea/TextArea.tsx';
 
-import { Post, PostCreateSchema } from '../../schemas/post.schema';
+import { Post, PostSchema } from '../../schemas/post.schema';
 import Input from './Input.tsx';
 
 export default function CreatePost() {
@@ -20,7 +20,7 @@ export default function CreatePost() {
     handleSubmit,
     formState: { errors },
   } = useForm<Post>({
-    resolver: zodResolver(PostCreateSchema),
+    resolver: zodResolver(PostSchema),
   });
 
   const { mutation } = useMutationCreatePost(createPostService, user?.token);
@@ -42,7 +42,10 @@ export default function CreatePost() {
         <h2 className='text-yellow-500 text-3xl font-extrabold tracking-tight mb-10 text-center'>
           Create Post
         </h2>
-        <form className='max-w-md mx-auto text-slate-800' onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className='max-w-md mx-auto text-slate-800'
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <input
             defaultValue={user?.user_id}
             type='hidden'
@@ -67,12 +70,18 @@ export default function CreatePost() {
           </div>
 
           <div className='my-4'>
-            <Textarea register={register} errors={errors}  label='content' />
+            <Textarea register={register} errors={errors} label='content' />
           </div>
           <section className='sm:flex items-center md:py-12 my-12'>
             {user?.user_id === undefined ? <SignInButton /> : <SubmitButton />}
           </section>
         </form>
+        {mutation.failureReason ? (
+          <p className='text-rose-500 text-xs tracking-tight font-extrabold'>{`${mutation.failureReason}`}</p>
+        ) : null}
+        {mutation?.isSuccess ? (
+          <p className='text-white'>Post has been saved ok!</p>
+        ) : null}
       </div>
       <div>
         <ResponsiveTable />

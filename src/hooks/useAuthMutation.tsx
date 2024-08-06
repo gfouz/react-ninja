@@ -17,7 +17,7 @@ export const useAuthMutation = (fetchApi: {
       queryClient.invalidateQueries({ queryKey: ['auth'] });
     },
     onSettled: () => queryClient.invalidateQueries({ queryKey: ['auth'] }),
-    mutationKey: ['posts'],
+    mutationKey: ['user-auth'],
   });
   return { mutation };
 };

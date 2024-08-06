@@ -15,7 +15,7 @@ const PasswordInput = ({ color, errors, register }: InputProps) => {
       labelPlacement='outside'
       placeholder='Repeat your Password'
       {...register('confirmPassword')}
-      classNames={{ label: 'dark:!text-white' }}
+      classNames={{ label: 'dark:!text-white', input: 'text-white' }}
       isInvalid={errors?.confirmPassword?.message ? true : false}
       errorMessage={`${errors?.confirmPassword?.message}`}
       endContent={<EyeButton color={color} type={type} setType={setType} />}

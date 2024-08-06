@@ -16,7 +16,10 @@ const PasswordInput = (props: InputProps) => {
       labelPlacement='outside'
       {...register('password')}
       placeholder='Enter your Password'
-      classNames={{ label: 'dark:!text-white' }}
+      classNames={{
+        label: 'dark:!text-white',
+        input: 'text-white tracking-wider',
+      }}
       isInvalid={errors?.password?.message ? true : false}
       errorMessage={`${errors?.password?.message}`}
       endContent={<EyeButton color={color} type={type} setType={setType} />}

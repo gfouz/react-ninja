@@ -3,7 +3,6 @@ import { InputProps } from '../../schemas/auth.schema.ts';
 
 const Input = (props: InputProps) => {
   const { errors, type = 'text', color, label, register, placeholder } = props;
- 
 
   return (
     <NextUIInput
@@ -14,7 +13,7 @@ const Input = (props: InputProps) => {
       labelPlacement='outside'
       placeholder={placeholder}
       {...register(label)}
-      classNames={{ label: 'dark:!text-white' }}
+      classNames={{ label: 'dark:!text-white', input: 'text-white' }}
       isInvalid={errors[label]?.message ? true : false}
       errorMessage={`${errors[label]?.message}`}
     />

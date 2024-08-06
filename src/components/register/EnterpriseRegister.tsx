@@ -31,12 +31,11 @@ export default function MaterialDesignSignUp() {
   const { mutation } = useAuthMutation(registerService);
 
   const onSubmit: SubmitHandler<Auth> = async (data) => {
-    mutation.mutateAsync(data);
-    console.log(data);
+    await mutation.mutateAsync(data);
   };
   return (
-    <div className='dark py-16 flex flex-col items-center justify-center bg-cyan-900'>
-      <div className='bg-cyan-950 p-8 py-16 rounded-3xl shadow-lg w-full max-w-md '>
+    <div className='dark py-20 flex flex-col items-center justify-center bg-cyan-950'>
+      <div className='bg-[#000f11] p-8 py-16 rounded-3xl shadow-lg w-full max-w-md '>
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-6 text-center'>
           Sign Up
         </h2>
@@ -82,6 +81,9 @@ export default function MaterialDesignSignUp() {
         </form>
         {mutation.failureReason ? (
           <p className='text-rose-500 tracking-tight font-extrabold text-xs mt-1'>{`${mutation.failureReason}`}</p>
+        ) : null}
+        {mutation?.isSuccess ? (
+          <p className='text-white'>Congratulations, you are registered!</p>
         ) : null}
       </div>
     </div>

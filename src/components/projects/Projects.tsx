@@ -11,15 +11,23 @@ interface ProjectList {
 
 export default function Projects({ projects }: ProjectList) {
   return (
-    <div className='grid-auto-fit gap-8 '>
+    <div className='grid-auto-fit gap-4 '>
       {/* Your projects here */}
 
       {projects.map((project, index) => (
         <div
           key={index}
-          className='text-gray-900 bg-slate-400 rounded-2xl overflow-hidden'
+          className='text-gray-400 bg-cyan-950 rounded-2xl overflow-hidden'
         >
-          <div className='aspect-[600/400] text-center rounded-lg'>
+          <div className='aspect-[600/400] text-center rounded-lg relative'>
+            <div className='absolute p-8 top-0 left-0 w-full h-full flex justify-center items-end'>
+              <a
+                className='text-white px-2 rounded rounded-xl text-3xl capitalize bg-[#22222290]'
+                href={project.url}
+              >
+                {project.title}
+              </a>
+            </div>
             <div className='overflow-hidden'>
               <img
                 className='transition-all hover:scale-[1.2]'
@@ -28,15 +36,15 @@ export default function Projects({ projects }: ProjectList) {
               />
             </div>
           </div>
-          <article className='p-4  embedded-link'>
+          <article className='p-4  customized-link'>
             <a href={project.url}>
-              <h3 className='text-slate-800 text-xl font-bold mb-2 capitalize'>
+              <h3 className='text-xl font-bold mb-2 capitalize'>
                 {project.title}
               </h3>
             </a>
 
             <p
-              className='text-base text-slate-800 paragraphs-link'
+              className='text-base paragraphs-link'
               dangerouslySetInnerHTML={{ __html: project.content }}
             />
           </article>

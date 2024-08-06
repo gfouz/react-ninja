@@ -2,8 +2,8 @@ import { Textarea as NextUITextarea } from '@nextui-org/input';
 import { InputProps } from '../../schemas/post.schema';
 
 export default function Textarea({
-  color='primary',
-  label='content',
+  color = 'primary',
+  label = 'content',
   register,
   errors,
   defaultValue,
@@ -27,4 +27,3 @@ export default function Textarea({
     />
   );
 }
-

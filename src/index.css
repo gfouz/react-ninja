@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.customized-link a {
+  @apply font-bold text-amber-200;
+}
 .th-class {
   @apply border border-gray-500 font-extrabold text-xs tracking-widest text-gray-700;
 }
@@ -72,10 +75,7 @@ a {
   text-decoration: none;
   background-color: transparent;
 }
-.embedded-link a {
-  color: blue;
-  font-weight: bolder;
-}
+
 /* Adjustments for smaller screens */
 /*@media screen and (max-width: 576px) {
   h1 {
@@ -189,5 +189,4 @@ button:focus-visible {
     opacity: 1;
   }
 }
-
 

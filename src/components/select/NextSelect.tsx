@@ -26,7 +26,7 @@ export default function Select({ register, errors, categories }: Props) {
       errorMessage={`${errors?.categories?.message}`}
       classNames={{
         label: '!text-violet-100 text-md capitalize font-black',
-        value: '!text-violet-100 text-md'
+        value: '!text-violet-100 text-md',
       }}
     >
       {categories ? (

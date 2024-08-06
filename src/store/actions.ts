@@ -1,7 +1,4 @@
-/* export const updateLocalStorage = (state: PostStore) => {
-	typeof window !== 'undefined' &&
-		window.localStorage.setItem('cart', JSON.stringify(state));
-}; */
+
 
 export interface Post {
   id: string;

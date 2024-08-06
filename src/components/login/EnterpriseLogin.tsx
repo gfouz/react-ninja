@@ -26,7 +26,7 @@ const EnterpriseLogin = () => {
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-slate-800'>
+    <div className='flex py-20 items-center justify-center bg-slate-800'>
       <div className='dark bg-slate-900 p-8 rounded-3xl shadow-lg w-full max-w-md '>
         <h2 className='text-slate-500 text-3xl font-extrabold tracking-tight mb-6 text-center'>
           Sign In
@@ -67,6 +67,9 @@ const EnterpriseLogin = () => {
         </form>
         {mutation.failureReason ? (
           <p className='text-rose-500 text-xs tracking-tight font-extrabold'>{`${mutation.failureReason}`}</p>
+        ) : null}
+        {mutation?.isSuccess ? (
+          <p className='text-white'>Authenticated</p>
         ) : null}
       </div>
     </div>
