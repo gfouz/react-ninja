@@ -53,7 +53,7 @@ cd ecommerce-template
 Install dependencies
 sh
 Copy code
-npm install
+npm install @testing-library/jest-dom --save-dev
 
 # or
 

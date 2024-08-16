@@ -90,6 +90,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.white-text-shadow {
+  text-shadow: 0 0 10px #f1f1f1;
+}
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 900px) {

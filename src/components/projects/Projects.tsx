@@ -17,7 +17,7 @@ export default function Projects({ projects }: ProjectList) {
       {projects.map((project, index) => (
         <div
           key={index}
-          className='text-gray-400 bg-cyan-950 rounded-2xl overflow-hidden'
+          className='text-gray-400 bg-[#060f15] rounded-2xl overflow-hidden'
         >
           <div className='aspect-[600/400] text-center rounded-lg relative'>
             <div className='absolute p-8 top-0 left-0 w-full h-full flex justify-center items-end'>

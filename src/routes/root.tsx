@@ -9,7 +9,7 @@ import { introduction } from './content.ts';
 const Root = () => {
   return (
     <Layout>
-      <main className='mx-auto text-gray-200 bg-[#0C1F26]'>
+      <main className='mx-auto text-gray-200 bg-[#0B1924]'>
         {/* About Section  w-[100%] aspect-[1.85] */}
         <section className='w-full relative shadow shadow-2xl'>
           <img
@@ -17,27 +17,29 @@ const Root = () => {
             src='images/space.jpg'
             alt='woman on laptop'
           />
-          <section className='absolute top-0 flex px-8 justify-center items-center left-0 w-full h-full'>
+          <section className='absolute top-0 flex px-8 justify-center left-0 w-full h-full'>
             <a
               href='https://github.com/gfouz'
-              className='flex flex-col items-center'
+              className='flex flex-col items-center justify-center'
             >
               <h1 className='sr-only'>Giovani fouz portfolio</h1>
-              <h2 className='text-[8vw] text-white font-extrabold'>
+              <h2 className='text-[8vw] text-gray-100 font-extrabold white-text-shadow'>
                 Fouz
-                <span className='text-lime-400 font-extrabold'>Website</span>
+                <span className='text-white font-extrabold'>Website</span>
               </h2>
-              <div className='input-errors my-8'>
-                <p className='text-white font-extrabold tracking-tight text-[3vw] relative bottom-10'>
-                  Welcome to my Portfolio!
-                </p>
-              </div>
               <img
-                className='w-[25px] h-auto m-[-3rem] md:w-[40px]'
+                className='w-[25px] h-auto md:w-[50px] relative top-2'
                 src='/images/www.png'
                 alt='my logo'
               />
+              <div className='input-errors my-8'>
+                <p className='text-gray-200 font-extrabold tracking-tight text-[3vw]'>
+                  Welcome to my Portfolio!
+                </p>
+              </div>
+              
             </a>
+            
           </section>
         </section>
 
